@@ -1,0 +1,23 @@
+<h1>Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Price</th>
+      <th>Duration</th>
+      <th></th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.option %></td>
+          <td><%= product.price %></td>
+          <td><%= product.duration %></td>
+        </tr>
+      <% end %>
+      <%= link_to "Create your project", new_project_path %>
+    </tbody>
+</table>
