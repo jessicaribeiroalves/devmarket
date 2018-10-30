@@ -1,4 +1,3 @@
-@import "bootstrap";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +12,45 @@
  *
 
  */
+ @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+///// COLORS /////
+$primary-color: #29378D; 
+$secondary-color: #4169E1;
+$primary-bg-color: #F6F7F7;
+$secondary-bg-color:#A6ABB3;
+
+ .text-primary {
+    color: $primary-color !important; 
+ }
+ .text-secondary {
+    color: $secondary-color !important;   
+ }
+
+ .bg-primary {
+     background-color: $primary-bg-color !important;
+ }
+ .bg-secondary {
+     background-color: $secondary-bg-color !important;
+ }
+
+
+///// FONTS /////
+$header-font: 'Roboto', sans-serif;
+$body-font: 'Open Sans', sans-serif;
+
+
+ //// Links /////
+ a, a:visited {
+    padding: 0 10px;
+    text-decoration: none !important;
+    color: $primary-color;
+}
+
+
+ //// Universal Styling /////
+body {
+    scroll-behavior: smooth;
+    font-family: $body-font;
+}
