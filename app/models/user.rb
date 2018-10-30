@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :projects
   has_many :bids
+
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
+  validates_length_of :password, in: 6..30, allow_blank: true
+  validates_presence_of :user_type
+  validates_length_of :name, in: 2..32, allow_blank: true
+  validates_length_of :name_company, in: 2..32, allow_blank: true
+  validates_length_of :bio, in: 10..500, allow_blank: true
+  validates_length_of :city, in: 2..100, allow_blank: true
+  validates_length_of :phone_number, in: 8..12, allow_blank: true
 end
