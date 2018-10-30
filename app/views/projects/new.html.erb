@@ -1,6 +1,6 @@
-<h1>Create a new project:</h1>
+<h1 class="container display-4 text-center">Create a new project:</h1><br>
 
-<div>
+<div class="container text-center">
     <%= form_with model: @projects, local: true do |form| %>
         <p>
             <%= form.label :product %> 
@@ -33,6 +33,6 @@
             <%= form.label :status %> 
             <%= form.text_field :status %>
         </p>
-        <button type="button"><%= form.submit %></button>
+        <button type="button" class="btn btn-light btn-lg btn-block"><%= form.submit %></button><br>
     <% end %>
 </div>

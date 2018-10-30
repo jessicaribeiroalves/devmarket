@@ -1,23 +1,22 @@
-<h1>Products</h1>
+<div class="container text-center">
 
-<table>
-  <thead>
-    <tr>
-      <th>Option</th>
-      <th>Price</th>
-      <th>Duration</th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1 class="container display-4 text-center">Our available options to create your project:</h1><br>
 
-    <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td><%= product.option %></td>
-          <td><%= product.price %></td>
-          <td><%= product.duration %></td>
-        </tr>
-      <% end %>
-      <%= link_to "Create your project", new_project_path %>
-    </tbody>
-</table>
+  <div class="row justify-content-center align-items-center">
+    <% @products.each do |product| %>
+      <div class="card col-12" style="width: 18rem;">
+        <img class="card-img-top" src="https://codetheweb.blog/assets/img/posts/full-image-hero/cover.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.option %></h5>
+          <p class="card-text"><%= product.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Price: <%= product.price %></li>
+          <li class="list-group-item">Duration: <%= product.duration %></li>
+        </ul>
+      </div>
+    <% end %>
+    <button type="button" class="btn btn-light btn-lg btn-block"><%= link_to "Create your project", new_project_path %></button><br>
+    
+  </div>
+</div>
