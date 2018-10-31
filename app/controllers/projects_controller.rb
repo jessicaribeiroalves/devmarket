@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   def index
+      @projects = Project.all
+    
   end
 
   def create
@@ -20,5 +22,12 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)
   end
+
+  def show
+    @project = Project.find(params[:id])
+
+  end
+
+
 
 end
