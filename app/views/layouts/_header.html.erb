@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg bg-secondary">
+  <%= link_to 'DevMarket', root_path, class:"navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      <%= link_to 'How it Works', root_path, class:"text-primary" %>
+      <%= link_to 'Projects', projects_path, class:"text-primary" %>
+      <%= link_to 'Register', new_user_registration_path, class:"text-primary" unless user_signed_in? %>
+      <%= link_to 'Log In', new_user_session_path, class:"text-primary" unless user_signed_in? %>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class:"text-primary" if current_user %>
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"text-primary" if current_user %>
+    </div>
+  </div>
+</nav>

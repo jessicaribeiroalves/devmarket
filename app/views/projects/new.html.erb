@@ -1,0 +1,38 @@
+<h1>Create a new project:</h1>
+
+<div>
+    <%= form_with model: @projects, local: true do |form| %>
+        <p>
+            <%= form.label :product %> 
+            <%= form.text_field :product %>
+        </p>
+        <p>
+            <%= form.label :price %> 
+            <%= form.text_field :price, type: 'number' %>
+        </p>
+        <p>
+            <%= form.label :title %> 
+            <%= form.text_field :title %>
+        </p>
+        <p>
+            <%= form.label :overview %> 
+            <%= form.text_field :overview %>
+        </p>
+
+        <p>
+            <%= form.label :description %> 
+            <%= form.text_field :description %>
+        </p>
+
+        <p>
+            <%= form.label :deadline %> 
+            <%= form.text_field :deadline, type: 'date' %>
+        </p>
+
+        <p>
+            <%= form.label :status %> 
+            <%= form.text_field :status %>
+        </p>
+        <button type="button"><%= form.submit %></button>
+    <% end %>
+</div>

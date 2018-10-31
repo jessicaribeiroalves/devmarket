@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users, path: "", path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
-  
+
   root "home#index"
-  get "users/sign_in"
-  get "projects", to: "projects#index"
-       
-  
+  resources :projects
+
+  # # get "projects/new", to: "projects#new", as: "new_project"
+  # # get "projects", to: "projects#index"
+  # # post "projects", to: "projects#create"
+  # get "projects/:id", to: "projects#show"
+
+  get "products", to: "products#index"
+
   # get 'users/show'
   # post 'users/create'
   # get ‘projects/new’
@@ -13,8 +18,4 @@ Rails.application.routes.draw do
   # delete 'users/destroy'
   # put 'users/update'
   # patch 'users/update'
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
 end
