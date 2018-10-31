@@ -1,4 +1,13 @@
 class ProjectImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+  ### Mini Magick ###
+  # process resize_to_fit: [800, 600]
+
+  # version :thumb do
+  #   process resize_to_fill: [300,200]
+  # end
+
+  ### CarrierWave + AWS ###
   # Choose what kind of storage to use for this uploader:
   storage :aws
 
