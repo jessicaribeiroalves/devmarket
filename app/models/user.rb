@@ -14,4 +14,21 @@ class User < ApplicationRecord
   validates_length_of :bio, in: 10..500, allow_blank: true
   validates_length_of :city, in: 2..100, allow_blank: true
   validates_length_of :phone_number, in: 8..12, allow_blank: true
+
+
+  ## Stripe
+  after_create_commit :add_customer_id #ActiveRecordCallback
+
+  # assigns Stripe customer_id upon User Registeration, for reuse
+  def add_customer_id
+    if self.customer_id.nil? # if customer doesn't exist
+      customer = Stripe::Customer.create(
+        :email => self.email,
+      )
+
+      self.customer_id = customer.id
+      self.save
+    end
+  end
+  ## Stripe END
 end

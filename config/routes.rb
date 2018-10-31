@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   get "users/sign_in"
   get "projects", to: "projects#index"
-       
   
+  post "process_payment" => "projects#process_payment", as: "payment"
+  # post "projects/new" => "projects#create", as: "payment"
+
   # get 'users/show'
   # post 'users/create'
   # get ‘projects/new’

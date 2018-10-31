@@ -1,10 +1,12 @@
-class ProjectsController < ApplicationController
-  # before_action :authenticate_user!
-
-  def index
+class PaymentsController < ApplicationController
+  before_action :authenticate_user!
+  
+  def new
+    @user = current_user
   end
 
-  def create
+  def process_payment
+    # Amount in cents
     @amount = 1000
 
     # creates new customer, but our app creates one on User Registeration instead
@@ -30,16 +32,6 @@ class ProjectsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to '/'
-
-    @projects = Project.new(project_params)
-    @projects.save
-
-    # redirect_to @projects
   end
-
-  def new
-    @projects = Project.new
-    @user = current_user
-  end
-
 end
+

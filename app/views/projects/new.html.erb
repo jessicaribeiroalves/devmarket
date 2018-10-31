@@ -33,6 +33,12 @@
             <%= form.label :status %> 
             <%= form.text_field :status %>
         </p>
-        <button type="button" class="btn btn-light btn-lg btn-block"><%= form.submit %></button><br>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+          data-description="A month's subscription"
+          data-amount="500"
+          data-locale="auto"></script>
+    
     <% end %>
 </div>
