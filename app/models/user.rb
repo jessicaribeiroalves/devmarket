@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates_length_of :bio, in: 10..500, allow_blank: true
   validates_length_of :city, in: 2..100, allow_blank: true
   validates_length_of :phone_number, in: 8..12, allow_blank: true
+
 end
