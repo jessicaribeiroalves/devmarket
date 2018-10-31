@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="header text-center mb-3">
+  <h1>Project Info</h1>
+  </div>
+
+<div class="row">
+  <div class="card mb-3 rounded p-5 mr-3 col-sm-6">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"> <td><%= @project.title %></h5>
+          <p class="card-text"><%= @project.overview %></p>
+          <p class="card-text"><%= @project.description %></p>
+      </div>
+  </div>
+</div>
+
+<%= link_to "Back to Projects", projects_path %>
+
+</div>
+
+
+
+
+
+

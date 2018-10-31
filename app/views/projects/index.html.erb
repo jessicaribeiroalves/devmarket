@@ -3,37 +3,22 @@
     <h1>Recent Projects</h1>
   </div>
 
-      <div class="card mb-3">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Project Title 1</h5>
-              <p class="card-text">Project description goes here</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-         </div>
-      </div>
-      <div class="card mb-3">
+<div class="row">
+  <% @projects.each do |projects| %>
+    <div class="card mb-3 rounded p-5 mr-3 col-sm-3">
+      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Project Title 2</h5>
-            <p class="card-text">Project description goes here</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title"> <td><%= projects.title %></h5>
+            <p class="card-text"><%= projects.overview %></p>
+            <p class="card-text"><%= projects.description %></p>
+            <p class="card-text"><%= link_to "more info", project_path(projects) %></p>             
         </div>
-          <img class="card-img-bottom" src=".../100px180/" alt="Card image cap">
-      </div>
-      <div class="card mb-3">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Project Title 3</h5>
-              <p class="card-text">Project description goes here</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Project Title 4</h5>
-            <p class="card-text">Project description goes here</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-          <img class="card-img-bottom" src=".../100px180/" alt="Card image cap">
-        </div>
-        
+    </div>
+  <% end %>
 </div>
+
+<%= link_to "Back Home", root_path %>
+
+</div>
+
+

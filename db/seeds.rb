@@ -14,17 +14,6 @@
   )
 end
 
-20.times do |x|
-  Project.create(
-    user_id: x,
-    description: Faker::Food.dish,
-    # price: rand(120),
-    # title: "test",
-    # overview:"test",
-    # description: Faker::Lorem.paragraph(2, true)
-  )
-end
-
 20.times do |i|
   User.create(
     user_type: "client",
@@ -37,6 +26,7 @@ end
     city: "Sydney",
   )
 end
+
 1.times do |i|
   User.create(
     user_type: "client",
@@ -62,3 +52,14 @@ end
     city: "Sydney",
   )
 end
+
+20.times do |x|
+  Project.create(
+    description: Faker::Food.dish,
+    title: "test",
+    overview: "test",
+    user_id: x
+  )
+end
+
+
