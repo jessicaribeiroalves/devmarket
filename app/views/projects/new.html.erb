@@ -1,10 +1,10 @@
-<h1>Create a new project:</h1>
+<h1 class="container display-4 text-center">Create a new project:</h1><br>
 
-<div>
-    <%= form_with model: @projects, local: true do |form| %>
+<div class="container text-center">
+    <%= form_with model: @project, local: true do |form| %>
         <p>
-            <%= form.label :product %> 
-            <%= form.text_field :product %>
+            <%= form.label :product_id %> 
+            <%= form.select :product_id, @products.collect {|p| [p.option, p.id]} %>
         </p>
         <p>
             <%= form.label :price %> 
@@ -29,10 +29,11 @@
             <%= form.text_field :deadline, type: 'date' %>
         </p>
 
-        <p>
-            <%= form.label :status %> 
-            <%= form.text_field :status %>
-        </p>
-        <button type="button"><%= form.submit %></button>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+          data-description="A month's subscription"
+          data-amount="500"
+          data-locale="auto"></script>
+    
     <% end %>
 </div>
