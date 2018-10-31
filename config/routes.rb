@@ -10,12 +10,4 @@ Rails.application.routes.draw do
   # get "projects/:id", to: "projects#show"
 
   get "products", to: "products#index"
-
-  # get 'users/show'
-  # post 'users/create'
-  # get ‘projects/new’
-  # get 'users/edit'
-  # delete 'users/destroy'
-  # put 'users/update'
-  # patch 'users/update'
 end
