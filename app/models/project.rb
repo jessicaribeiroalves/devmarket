@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
+  belongs_to :product
   has_many :bids
   has_one :rating
-  belongs_to :product
+  mount_uploader :project_image, ProjectImageUploader
+  has_many :images, as: :imageable
 end

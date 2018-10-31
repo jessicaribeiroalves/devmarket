@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  mount_uploader :avatar, AvatarUploader
+  has_many :images, as: :imageable
   has_many :projects
   has_many :bids
 
@@ -14,5 +16,4 @@ class User < ApplicationRecord
   validates_length_of :bio, in: 10..500, allow_blank: true
   validates_length_of :city, in: 2..100, allow_blank: true
   validates_length_of :phone_number, in: 8..12, allow_blank: true
-
 end

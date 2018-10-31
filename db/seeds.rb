@@ -1,5 +1,5 @@
 # !!! Seed must be create in order due to relationships
-# User, Product, Offer, Rating
+# User, Product, Project, Bid, Rating
 
 20.times do |i|
   User.create(
@@ -51,11 +51,9 @@ end
 20.times do |x|
   Project.create(
     description: Faker::Food.dish,
+    product_id: rand(4),
     title: "test",
     overview: "test",
-    user_id: x
+    user_id: x,
   )
 end
-
-
-
