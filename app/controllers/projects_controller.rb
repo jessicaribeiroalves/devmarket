@@ -18,16 +18,18 @@ class ProjectsController < ApplicationController
     @products = Product.all
   end
 
-  private
-  def project_params
-    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)
+  def dashboard
+  
   end
 
   def show
     @project = Project.find(params[:id])
-
   end
 
+  private
+  def project_params
+    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)
+  end
 
 
 end

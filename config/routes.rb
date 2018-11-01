@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
   get 'products', to: 'products#index'
+  get 'projects/dashboard', to: 'projects#dashboard'
 
   root "home#index"
   resources :projects
