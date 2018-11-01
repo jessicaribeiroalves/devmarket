@@ -19,7 +19,9 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-  
+    @open = Project.where(:status => 0)
+    @in_progress = Project.where(:status => 1)
+    @completed = Project.where(:status => 2)
   end
 
   def show
@@ -28,7 +30,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)
+    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline, :status)
   end
 
 
