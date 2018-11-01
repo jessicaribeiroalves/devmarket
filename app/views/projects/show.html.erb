@@ -1,21 +1,72 @@
 <div class="container-fluid">
   <div class="header text-center mb-3">
-  <h1>Project Info</h1>
+    <h1>Project Info</h1>
   </div>
 
-<div class="row">
-  <div class="card mb-3 rounded p-5 mr-3 col-sm-6">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"> <td><%= @project.title %></h5>
-          <p class="card-text"><%= @project.overview %></p>
-          <p class="card-text"><%= @project.description %></p>
-      </div>
+  <div class="row">
+    <div class="card mb-3 rounded p-5 mr-3 col-sm-6">
+      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"> <td><%= @project.title %></h5>
+            <p class="card-text"><%= @project.overview %></p>
+            <p class="card-text"><%= @project.description %></p>
+        </div>
+    </div>
   </div>
+
+<%# --- CONTROL PANEL CLIENTS & DEVS --- %>
+<div>
+  <%# FOR Client %>
+  <% if current_user.id == @project.user_id && @project.status == 2 %>
+    <%# PLACEHOLDER need method to change status to complete instead of link below %>
+    <%= link_to 'Project Complete?', project_path(@project), class:"btn btn-primary" %>
+  <% end %>
+
+  <% if current_user.id == @project.user_id && @project.status == 3 %>  
+    <span class="btn btn-success">Completed!</span>
+    
+    <% if @project.rating = nil %>
+        <%= render "ratings/form", project: @project, rating: @rating %>
+      <% elsif %>
+        <%#= @project.rating.testimony %>
+    <% end %>
+  <% end %> 
+
+    <%# FOR Dev %>
+  <% if current_user.user_type == "dev" && @project.status == 1 %>
+    <%# PLACEHOLDER need method instead of link below %>
+    <a href="#" class="btn btn-primary">Dev Places Bid</a>
+  <% end %>
 </div>
 
-<%= link_to "Back to Projects", projects_path %>
+<%# --- LIST OF BIDS --- %>
+<div>
+  Bid 1
+  <%# if current_user is owner %>
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
+</div>
+<div>
+  Bid 2
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
+</div>
+<div>
+  Bid 3
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
+</div>
 
+
+<%# --- RATINGS --- %>
+<%# if project.rating exists %>
+<%# <div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">Ratings:</h5>
+    <p class="card-text">Built me a great website. Would definitely hire again.</p>
+    <a href="#" class="btn btn-primary">To 'Dev' Profile</a>
+  </div>
+</div> %>
+
+
+  <%= link_to "Back to Projects", projects_path %>
 </div>
 
 
