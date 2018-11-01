@@ -1,21 +1,61 @@
-<h1 class="container text-center">Dashboard</h1><br>
+<h1 class="container display-4 text-center">Client's Dashboard</h1><br>
 
-<div class="container text-center">
-  <div class="col">
-    <h2>Open</h2>
+<h2>Open</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Bids</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @open.each do|project| %>
-      <%= project.title %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>Bids status</td>
+      </tr>
     <% end %>
+  </tbody>
+</table>
 
-    <h2>In Progress</h2>
-    <% @in_progress.each do |project| %>
-      <%= project.title %>
+<h2>In Progress</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Developer working on the project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @in_progress.each do|project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>Developer's name</td>
+      </tr>
     <% end %>
+  </tbody>
+</table>
 
-    <h2>Completed</h2>
-    <% @completed.each do |project| %>
-      <%= project.title %>
+<h2>Completed</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Developer who worked on the project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @completed.each do|project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>Developer's name</td>
+      </tr>
     <% end %>
-  </div>
-</div>
-
+  </tbody>
+</table>
