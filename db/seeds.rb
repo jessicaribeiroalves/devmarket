@@ -40,13 +40,21 @@ end
   )
 end
 
-3.times do |i|
-  Product.create(
-    option: "option #{1}",
-    price: rand(1000),
-    duration: rand(30),
-  )
-end
+Product.create(
+  option: "Simple Website",
+  price: 300,
+  duration: 7,
+)
+Product.create(
+  option: "Simple eCommerce Site",
+  price: 1000,
+  duration: 14,
+)
+Product.create(
+  option: "Basic Blog Site",
+  price: 500,
+  duration: 10,
+)
 
 20.times do |x|
   Project.create(
@@ -55,5 +63,6 @@ end
     title: "test",
     overview: "test",
     user_id: x,
+    status: 1,
   )
 end

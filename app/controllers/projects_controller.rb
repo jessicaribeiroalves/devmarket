@@ -1,15 +1,19 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project, only: [:show, :status_complete]
 
   def index
     @projects = Project.all
   end
 
   def show
-    @project = Project.find(params[:id])
+    @rating = Rating.new # for creating a new rating
+    @rated = @project.rating # for showing an existing rating
+  end
 
-    @rating = Rating.new # required for creating a rating
-    # @rated = Project.find(params[:id]).rating   FIXME returning nil
+  def new
+    @project = Project.new
+    @products = Product.all
   end
 
   def create
@@ -18,12 +22,18 @@ class ProjectsController < ApplicationController
     @project.save
   end
 
-  def new
-    @project = Project.new
-    @products = Product.all
+  def status_complete
+    if @project.ongoing?
+      @project.completed!
+    end
+    redirect_to project_path(@project)
   end
 
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)

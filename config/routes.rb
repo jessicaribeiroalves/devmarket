@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :ratings, only: [:create]
+    member do
+      post "status_complete", to: "projects#status_complete"
+    end
   end
 end

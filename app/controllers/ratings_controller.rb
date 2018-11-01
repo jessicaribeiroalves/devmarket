@@ -1,7 +1,8 @@
 class RatingsController < ApplicationController
-  #   before_action :authenticate_user!
-
+  
   def create
+  # TODO Authorization
+
     @rating = Rating.new(rating_params)
     @rating.project_id = params[:project_id]
 
@@ -15,6 +16,14 @@ class RatingsController < ApplicationController
   end
 
   private
+
+  # def check_owner?
+  #   if current_user.id == @project.user_id && :authenticate_user!
+  #     true
+  #   else
+  #     redirect_to aroject_path(params[:project_id]), notice: "Sorry, you are not the owner of this project"
+  #   end
+  # end
 
   def rating_params
     params.require(:rating).permit(:rate, :testimony, :project_id)
