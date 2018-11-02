@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_043922) do
+ActiveRecord::Schema.define(version: 2018_10_31_101955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,16 +25,25 @@ ActiveRecord::Schema.define(version: 2018_10_30_043922) do
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.text "name"
+    t.bigint "imageable_id"
+    t.string "imageable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "option"
     t.integer "price"
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "product"
     t.integer "price"
     t.string "title"
     t.text "overview"
@@ -44,6 +53,9 @@ ActiveRecord::Schema.define(version: 2018_10_30_043922) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.text "project_image"
+    t.index ["product_id"], name: "index_projects_on_product_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -70,12 +82,14 @@ ActiveRecord::Schema.define(version: 2018_10_30_043922) do
     t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bids", "projects"
   add_foreign_key "bids", "users"
+  add_foreign_key "projects", "products"
   add_foreign_key "projects", "users"
   add_foreign_key "ratings", "projects"
 end
