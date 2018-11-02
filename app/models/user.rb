@@ -3,8 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :projects
-  has_many :bids
+  mount_uploader :avatar, AvatarUploader
+
+  has_many :images, as: :imageable
+  has_many :projects, dependent: :destroy
+  has_many :bids, dependent: :destroy
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, uniqueness: true
   validates_length_of :password, in: 6..30, allow_blank: true
@@ -14,5 +17,4 @@ class User < ApplicationRecord
   validates_length_of :bio, in: 10..500, allow_blank: true
   validates_length_of :city, in: 2..100, allow_blank: true
   validates_length_of :phone_number, in: 8..12, allow_blank: true
-
 end
