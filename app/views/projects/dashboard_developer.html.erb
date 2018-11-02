@@ -1,39 +1,89 @@
 <div class="container">
-  <div class="row">
-    <div class ="text-center p-3"> 
+  <div class="row text-center p-3">
+    <div class> 
       <h1> My Dashboard </h1>
     </div>
+  </div> 
 
-    <table class="table">
+  <div class> 
+      <h2> In Progress Projects</h2>
+  </div>
+
+    <table class="table table-striped">
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Project Fee</th>
       </tr>
     </thead>
     <tbody>
+      <% @projects.each do |project| %>
       <tr>
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
       </tr>
+    </div> 
+  <% end %>
+  </tbody>
+  </table>
+
+  <div class"mt-4"> 
+      <h2> Active Bids </h2>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-light">
       <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
+        <th scope="col">#</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Bid Status</th>
       </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
       <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+        <th scope="row">1</th>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
       </tr>
+      <% end %>      
     </tbody>
   </table>
+
+  <div class"mt-4"> 
+      <h2> Completed Projects </h2>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Bid Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
+      </tr>
+      <% end %>      
+    </tbody>
+  </table>
+  
+ 
+    
+    
     
 
     
