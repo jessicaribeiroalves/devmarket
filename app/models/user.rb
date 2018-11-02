@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvatarUploader
+
   has_many :images, as: :imageable
-  has_many :projects
-  has_many :bids
+  has_many :projects, dependent: :destroy
+  has_many :bids, dependent: :destroy
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, uniqueness: true
   validates_length_of :password, in: 6..30, allow_blank: true

@@ -9,6 +9,8 @@
     <div class="card mb-2 p-3 col-sm-8">
       <img class="card-img-top" src=".../100px180/" alt="Card image cap">
         <div class="card-body">
+          <label for="project_title"><strong>Project Title<strong></label>
+          <p class=card-text"><%= project.title %></p>  
           <label for="project_overview"><strong>Project Overview<strong></label>
           <p class="card-text"><%= project.overview %></p>
           <label for="project_description"><strong>Project Description</strong></label>
@@ -25,7 +27,6 @@
   </div>
   <% end %>
 </div>
-
 
   <%= link_to "Back Home", root_path %>
 

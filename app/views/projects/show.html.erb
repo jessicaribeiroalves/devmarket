@@ -24,11 +24,63 @@
             </button>
           </div>
       </div>
+  
+  <%= link_to "Back to Projects", projects_path %>
+
   </div>
+
+<%# --- CONTROL PANEL CLIENTS & DEVS --- %>
+  <div>
+    <%# FOR Client to manage their project %>
+    <% if current_user.id == @project.user_id && @project.status == "ongoing" %>
+      <%= link_to "Project Complete?", status_complete_project_path(@project), method: :post, data: { confirm: 'Project Complete?' }, class:"btn btn-warning"%>
+    <% end %>
+
+    <% if @project.status == "completed" %>  
+      <span class="btn btn-success">Completed!</span>
+
+      <%# --- Completed Project-Rated--- %>
+      <% if @project.rating != nil %>
+        <div class="card w-75">
+          <div class="card-body">
+            <span class="card-title">Ratings:</span> <%= @rated.rate %>
+            <p class="card-text">
+              <%= @rated.testimony %>
+            </p>
+            <%# TODO: route to bid accepted => dev %>
+            <a href="#" class="btn btn-primary">To 'Dev' Profile</a>
+          </div>
+        </div>
+      <% end %>
+     <%# --- Completed Project-Not Yet Rated--- %>
+      <% if @project.rating == nil && current_user.id == @project.user_id &&%>
+          <%= render "ratings/form", project: @project, rating: @rating %>         
+      <% end %>
+    <% end %> 
+
+    <%# FOR Dev to place a bid %>
+    <% if current_user.user_type == "dev" && @project.status == "open" %>
+      <%# PLACEHOLDER need method instead of link below %>
+      <a href="#" class="btn btn-primary">Dev Places Bid</a>
+    <% end %>
+</div>
+
+<%# --- LIST OF BIDS --- %>
+<div>
+  Bid 1
+  <%# if current_user is owner %>
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
+</div>
+<div>
+  Bid 2
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
+</div>
+<div>
+  Bid 3
+  <a href="#" class="btn btn-primary">Client Accepts?</a>
 </div>
 
   <%= link_to "Back to Projects", projects_path %>
-
 </div>
 
 
