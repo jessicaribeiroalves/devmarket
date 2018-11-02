@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard_developer
-    @project = Project.new
+    @projects = Project.all
     @open = Project.where(:status => 0)
     @in_progress = Project.where(:status => 1)
     @completed = Project.where(:status => 2)
