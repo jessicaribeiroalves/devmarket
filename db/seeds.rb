@@ -22,7 +22,7 @@ end
   )
 end
 
-1.times do |i|
+5.times do |i|
   User.create(
     user_type: "dev",
     email: "devpart#{i}@mail.com",
