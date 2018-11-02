@@ -1,24 +1,47 @@
+
 <div class="container">
   <div class="header text-center mb-3">
     <h1>Recent Projects</h1>
   </div>
 
-  <div class="row">
-    <% @projects.each do |project| %>
-      <div class="card mb-3 rounded p-5 mr-3 col-sm-3">
-        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"> <td><%= project.title %></h5>
-              <p class="card-text"><%= project.overview %></p>
-              <p class="card-text"><%= project.description %></p>
-              <p class="card-text"><%= link_to "more info", project_path(project) %></p>             
-          </div>
-      </div>
-    <% end %>
+<div class="row">
+  <% @projects.each do |project| %>
+    <div class="card mb-2 p-3 col-sm-8">
+      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+          <label for="project_title"><strong>Project Title<strong></label>
+          <p class=card-text"><%= project.title %></p>  
+          <label for="project_overview"><strong>Project Overview<strong></label>
+          <p class="card-text"><%= project.overview %></p>
+          <label for="project_description"><strong>Project Description</strong></label>
+          <p class="card-text"><%= project.description %></p>
+          <label for="project_deadline"><strong>Project Deadline</strong></label>
+          <p class="card-text"><%= project.deadline %></p>
+          <label for="project_price"><strong>Project Price</strong></label>
+          <p class="card-text"><%= project.price %></p>
+          <label for="project_status"><strong>Project Status</strong></label>
+          <p class="card-text"><%= link_to "More Info", project_path(project) %></p>               
+          <%= link_to "BID", project_bids_path(project), method: :post %>
+       </div>
+    </div>
   </div>
+  <% end %>
+</div>
 
   <%= link_to "Back Home", root_path %>
 
-</div>
+
+
+
+# <% if user_signed_in? %>
+# <label for="project_status"><strong>Project Status</strong></label>
+# <p class="card-text"><%= link_to "More Info", project_path(@projects) %></p>
+#   <span class="border border-primary"></span>
+  # <% else %>
+  #  <li><%= link_to "Sign Up", new_user_registration_path %></li>
+  #  <li><%= link_to "Login", new_user_session_path %></li>
+  # <% end %> 
+
+
 
 

@@ -58,11 +58,12 @@ Product.create(
 
 20.times do |x|
   Project.create(
-    description: Faker::Food.dish,
+    title: Faker::Appliance.brand,
+    overview: Faker::Lorem.sentence(3),  
+    description: Faker::Lorem.paragraph(2),
     product_id: rand(4),
-    title: "test",
-    overview: "test",
-    user_id: x,
-    status: 1,
+    deadline: Faker::Business.credit_card_expiry_date,
+    user_id: 4,
+    price: Faker::Commerce.price
   )
 end

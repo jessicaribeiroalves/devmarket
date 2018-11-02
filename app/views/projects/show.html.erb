@@ -1,17 +1,32 @@
+
 <div class="container-fluid">
   <div class="header text-center mb-3">
-    <h1>Project Info</h1>
+  <h1>Project Information</h1>
   </div>
 
-  <div class="row">
-    <div class="card mb-3 rounded p-5 mr-3 col-sm-6">
-      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"> <td><%= @project.title %></h5>
-            <p class="card-text"><%= @project.overview %></p>
-            <p class="card-text"><%= @project.description %></p>
-        </div>
-    </div>
+<div class="row">
+  <div class="card mb-3 rounded p-5 mr-3 col-sm-10">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+      <div class="card-body">
+        <label for="project_overview"><strong>Project Overview<strong></label>
+        <p class="project_overview"><%= @project.overview %></p>
+        <label for="project_description"><strong>Project Description</strong></label>
+        <p class="Project Description"><%= @project.description %></p>
+        <label for="project_deadline"><strong>Project Deadline</strong></label>
+        <p class="Project Deadline"><%= @project.deadline %></p>
+        <label for="project_price"><strong>Project Price</strong></label>
+        <p class="Project Price"><%= @project.price %></p>
+        <label for="project_status"><strong>Project Status</strong></label>
+        <p class="Project Status"><%= @project.status %></p>
+          <div> 
+            <button type="button" class="close btn btn-primary">
+              <%= link_to "BID", project_bids_path(@project), method: :post %>
+            </button>
+          </div>
+      </div>
+  
+  <%= link_to "Back to Projects", projects_path %>
+
   </div>
 
 <%# --- CONTROL PANEL CLIENTS & DEVS --- %>
@@ -49,7 +64,6 @@
       <a href="#" class="btn btn-primary">Dev Places Bid</a>
     <% end %>
 </div>
-
 
 <%# --- LIST OF BIDS --- %>
 <div>
