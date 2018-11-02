@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'products', to: 'products#index'  
   get 'projects/dashboard', to: 'projects#dashboard'
+  get 'projects/dashboard_developer', to: 'projects#dashboard_developer'
 
   root "home#index"
   
