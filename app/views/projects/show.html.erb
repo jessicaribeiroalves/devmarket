@@ -8,7 +8,7 @@
   <div class="card mb-3 rounded p-5 mr-3 col-sm-10">
     <img class="card-img-top" src=".../100px180/" alt="Card image cap">
       <div class="card-body">
-        <label for="project_overview"><strong>Project Overview<strong></label>
+        <label for="project_overview"><strong>Project Overview</strong></label>
         <p class="project_overview"><%= @project.overview %></p>
         <label for="project_description"><strong>Project Description</strong></label>
         <p class="Project Description"><%= @project.description %></p>
@@ -53,7 +53,7 @@
         </div>
       <% end %>
      <%# --- Completed Project-Not Yet Rated--- %>
-      <% if @project.rating == nil && current_user.id == @project.user_id &&%>
+      <% if @project.rating == nil && current_user.id == @project.user_id %>
           <%= render "ratings/form", project: @project, rating: @rating %>         
       <% end %>
     <% end %> 
@@ -82,9 +82,3 @@
 
   <%= link_to "Back to Projects", projects_path %>
 </div>
-
-
-
-
-
-

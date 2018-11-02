@@ -1,9 +1,8 @@
 class ProjectsController < ApplicationController
 
-
   # Authenticate user before accessing website
 
-  before_action :authenticate_user!, :except => [@projects, :index, :show]
+  before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
   before_action :set_project, only: [:show, :status_complete]
 
   # Show all projects
@@ -16,12 +15,13 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     @project.save    
+  end
 
   def show
+    @project = Project.find(params[:id])
     @rating = Rating.new # for creating a new rating
     @rated = @project.rating # for showing an existing rating
     @bid = Bid.new
-
   end
   
 
@@ -31,6 +31,13 @@ class ProjectsController < ApplicationController
   end
   
   def dashboard
+    @open = Project.where(:status => 0)
+    @in_progress = Project.where(:status => 1)
+    @completed = Project.where(:status => 2)
+  end
+
+  def dashboard_developer
+    @project = Project.new
     @open = Project.where(:status => 0)
     @in_progress = Project.where(:status => 1)
     @completed = Project.where(:status => 2)
@@ -52,4 +59,5 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline, :status)
   end
+
 end
