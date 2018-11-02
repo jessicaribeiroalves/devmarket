@@ -16,6 +16,16 @@ class ProjectsController < ApplicationController
     @products = Product.all
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+  
+  def dashboard
+    @open = Project.where(:status => 0)
+    @in_progress = Project.where(:status => 1)
+    @completed = Project.where(:status => 2)
+  end
+
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
@@ -36,6 +46,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline)
+    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline, :status)
   end
 end

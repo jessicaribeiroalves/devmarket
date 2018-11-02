@@ -3,21 +3,21 @@
     <h1>Recent Projects</h1>
   </div>
 
-<div class="row">
-  <% @projects.each do |projects| %>
-    <div class="card mb-3 rounded p-5 mr-3 col-sm-3">
-      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"> <td><%= projects.title %></h5>
-            <p class="card-text"><%= projects.overview %></p>
-            <p class="card-text"><%= projects.description %></p>
-            <p class="card-text"><%= link_to "more info", project_path(projects) %></p>             
-        </div>
-    </div>
-  <% end %>
-</div>
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div class="card mb-3 rounded p-5 mr-3 col-sm-3">
+        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"> <td><%= project.title %></h5>
+              <p class="card-text"><%= project.overview %></p>
+              <p class="card-text"><%= project.description %></p>
+              <p class="card-text"><%= link_to "more info", project_path(project) %></p>             
+          </div>
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to "Back Home", root_path %>
+  <%= link_to "Back Home", root_path %>
 
 </div>
 
