@@ -1,3 +1,4 @@
+<%# User Profile %>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-6 bg-white">
@@ -5,7 +6,6 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), local: true, html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
-
         
         <div class="form-group text-center">
           <%= image_tag current_user.avatar_url, alt: "User Avatar Picture" unless current_user.avatar_url.nil? %>
@@ -77,3 +77,32 @@
     </div>
   </div>
 </div>
+
+
+<%# Dev Portfolio %>
+<% if current_user.user_type == "dev" %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10 text-center bg-white">
+      <h2 class="text-center">Show your work, upload a screenshot</h2>
+
+      <% current_user.images.each do |image| %>
+        <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
+        <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"btn btn-warning" %>
+      <% end%>
+
+      <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
+        <div class="form-group text-center">
+          <%= f.file_field :name, class:"form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Image" %>
+        </div>
+      <% end %>
+
+      <%= link_to 'My Profile Page', profile_path(current_user), class:"btn btn-primary text-white" %>
+    </div>
+  </div>
+</div>
+<% end %>
+

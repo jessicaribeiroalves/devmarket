@@ -7,7 +7,7 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
-      <%= button_to "Find a project", projects_path, :class => "btn btn-secondary btn-lg", :method => :get %>
+      <%= button_to "Find a Project", projects_path, :class => "btn btn-secondary btn-lg", :method => :get %>
     </div>
     <div class="col">
       <%= button_to "Post a Project", new_project_path, :class => "btn btn-secondary btn-lg", :method => :get %>
@@ -59,4 +59,12 @@
     <a class="col"><i class="fas fa-3x fa-arrow-right"></i></a>
     <a class="col"><i class="fas fa-5x fa-check"></i><p>Get your done project!</p></a>
   </div>
+
+<div>
+    <%= link_to 'List of Products', products_path %>
+</div>
+
+
+<div>
+    <%= link_to 'List of Devs', profiles_path %>
 </div>
