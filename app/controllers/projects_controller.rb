@@ -1,21 +1,21 @@
 class ProjectsController < ApplicationController
   # Authenticate user before accessing website
-  before_action :authenticate_user!, :except => [@projects, :index, :show]
+  before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
   before_action :set_project, only: [:show, :status_complete]
 
   def index
-      @projects = Project.all
+    @projects = Project.all
   end
 
   def new
     @project = Project.new
     @products = Product.all
   end
-  
+
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    @project.save    
+    @project.save
   end
 
   def show
@@ -23,15 +23,23 @@ class ProjectsController < ApplicationController
     @rated = @project.rating # for showing an existing rating
     @bid = Bid.new # for creating a new bid - devs
   end
-  
-  # Clients Dashboard
+
+  # Client's Dashboard
   def dashboard
     @open = Project.where(:status => 0)
-    @in_progress = Project.where(:status => 1)
+    @ongoing = Project.where(:status => 1)
     @completed = Project.where(:status => 2)
   end
 
-  def status_complete # for client
+   # Developer's Dashboard
+  def dashboard_developer
+    @projects = Project.all
+    @open = Project.where(:status => 0)
+    @ongoing = Project.where(:status => 1)
+    @completed = Project.where(:status => 2)
+  end
+
+  def status_complete
     if @project.ongoing?
       @project.completed!
     end

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show]
   resources :images, only: [:create, :destroy]
 
-  get "projects/dashboard", to: "projects#dashboard"
+  get 'projects/dashboard', to: 'projects#dashboard'
+  get 'projects/dashboard_developer', to: 'projects#dashboard_developer'
 
   resources :projects do
     resources :bids, only: [:create]
