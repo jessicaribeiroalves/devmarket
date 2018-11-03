@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row text-center p-3">
+    <div class> 
+      <h1> My Dashboard </h1>
+    </div>
+  </div> 
+
+  <div class> 
+      <h2> In Progress Projects</h2>
+  </div>
+
+    <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Project Fee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
+      </tr>
+    </div> 
+  <% end %>
+  </tbody>
+  </table>
+
+  <div class"mt-4"> 
+      <h2> Active Bids </h2>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Bid Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
+      </tr>
+      <% end %>      
+    </tbody>
+  </table>
+
+  <div class"mt-4"> 
+      <h2> Completed Projects </h2>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">Bid Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= project.title %></td>
+        <td><%= project.overview %></td>
+        <td><%= project.price %></td>
+      </tr>
+      <% end %>      
+    </tbody>
+  </table>
+  
+ 
+    
+    
+    
+
+    
+
+
+

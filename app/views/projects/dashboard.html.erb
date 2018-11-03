@@ -1,4 +1,4 @@
-<h1 class="container display-4 text-center">Client's Dashboard</h1><br>
+<h1 class="container display-4 text-center" >Client's Dashboard</h1><br>
 
 <%# Projects created by the user(client) and open to bids, not in progress yet%>
 <h2>Open</h2>
@@ -48,7 +48,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @in_progress.each do|project| %>
+    <% @ongoing.each do|project| %>
       <tr>
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>

@@ -1,9 +1,8 @@
 class RatingsController < ApplicationController
-  
   def create
-  # TODO Authorization
+    # TODO Authorization
 
-    @rating = Rating.new(rating_params)
+    @rating = Rating.new(params.require(:rating).permit(:rate, :testimony, :project_id))
     @rating.project_id = params[:project_id]
 
     respond_to do |format|
@@ -25,7 +24,4 @@ class RatingsController < ApplicationController
   #   end
   # end
 
-  def rating_params
-    params.require(:rating).permit(:rate, :testimony, :project_id)
-  end
 end
