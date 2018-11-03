@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader # carrierwave gem
 
-  has_many :images, as: :imageable
+  has_many :images, as: :imageable #, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :bids, dependent: :destroy
 

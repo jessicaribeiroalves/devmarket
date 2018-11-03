@@ -1,0 +1,80 @@
+<h1 class="container display-4 text-center" >Client's Dashboard</h1><br>
+
+<%# Projects created by the user(client) and open to bids, not in progress yet%>
+<h2>Open</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Bids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @open.each_with_index do |project, index| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="heading<%= index.to_s %>">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">Bids</button>
+                </h5>
+              </div>
+
+              <div id="collapse<%= index.to_s %>" class="collapse show" aria-labelledby="heading<%= index.to_s %>"    data-parent="#accordion">
+                <div class="card-body">
+                  Bid<%= index.to_s %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%# Projects created by the user and in progress - the developer already has been chosen by the client %>
+<h2>In Progress</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Developer working on the project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ongoing.each do|project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>Developer's name</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%# Completed and closed projects that were created by the user (client) %>
+<h2>Completed</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Developer who worked on the project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @completed.each do|project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.title %></td>
+        <td>Developer's name</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
