@@ -9,7 +9,7 @@
     <div class="row justify-content-center bg-white">
         <div class="col-sm-12 col-md-2 ">
             <div class="form-group text-center">
-                <%= image_tag current_user.avatar_url, alt: "User Avatar Picture" unless current_user.avatar_url.nil? %>
+                <%= image_tag @dev.avatar_url, alt: "User Avatar Picture" unless @dev.avatar_url.nil? %>
             </div>
             <div class="form-group">
                 <%= @dev.name %>
@@ -44,9 +44,10 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-8 bg-white">
+        <div class="col-sm-12 col-md-10 bg-white">
             <% @images.each do |image| %>
-                <%= image_tag image.name_url , alt: "Screenshot of Devs work" unless image.name_url.nil? %>
+                <%# <%= image_tag image.name_url , alt: "Screenshot of Devs work" unless image.name_url.nil? %>
+                <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
             <% end %>
         </div>
     </div>

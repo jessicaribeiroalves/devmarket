@@ -86,27 +86,23 @@
     <div class="col-sm-12 col-md-10 text-center bg-white">
       <h2 class="text-center">Show your work, upload a screenshot</h2>
 
-      <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
-
       <% current_user.images.each do |image| %>
-        <%= image_tag image.name_url, alt: "Screenshot of Devs work" unless image.name_url.nil? %>
-        <%# <p> %>
-        <%# <label> %>
-          <%# <%= f.check_box :remove_image %> %>
-          <%# Remove Image %>
-        <%# </label> %>
-      <%# </p> %>
-      <% end %>
+        <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
+        <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"btn btn-warning" %>
+      <% end%>
 
+      <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
         <div class="form-group text-center">
           <%= f.file_field :name, class:"form-control" %>
         </div>
-
         <div class="actions">
           <%= f.submit "Add Image" %>
         </div>
       <% end %>
+
+      <%= link_to 'My Profile Page', profile_path(current_user), class:"btn btn-primary text-white" %>
     </div>
   </div>
 </div>
 <% end %>
+
