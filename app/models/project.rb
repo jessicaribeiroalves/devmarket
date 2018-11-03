@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  enum status: { open: 1, ongoing: 2, completed: 3 }
+  enum status: { open: 0, ongoing: 1, completed: 2 }
 
   belongs_to :user
   belongs_to :product
