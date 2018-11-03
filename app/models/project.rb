@@ -8,7 +8,6 @@ class Project < ApplicationRecord
 
   has_many :bids, dependent: :destroy
   has_one :rating, dependent: :destroy
-  mount_uploader :project_image, ProjectImageUploader
   has_many :images, as: :imageable
-
+  # mount_uploader :project_image, ProjectImageUploader  # use Image model instead
 end

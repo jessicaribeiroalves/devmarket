@@ -35,7 +35,7 @@
     <% if current_user.id == @project.user_id && @project.status == "ongoing" %>
       <%= link_to "Project Complete?", status_complete_project_path(@project), method: :post, data: { confirm: 'Project Complete?' }, class:"btn btn-warning"%>
     <% end %>
-
+    
     <% if @project.status == "completed" %>  
       <span class="btn btn-success">Completed!</span>
 
