@@ -78,32 +78,35 @@
   </div>
 </div>
 
-<br /><br /><br /> 
+
 <%# Dev Portfolio %>
 <% if current_user.user_type == "dev" %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 bg-white">
+    <div class="col-sm-12 col-md-10 text-center bg-white">
       <h2 class="text-center">Show your work, upload a screenshot</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), local: true, html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
+      <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
+
+      <% current_user.images.each do |image| %>
+        <%= image_tag image.name_url, alt: "Screenshot of Devs work" unless image.name_url.nil? %>
+        <%# <p> %>
+        <%# <label> %>
+          <%# <%= f.check_box :remove_image %> %>
+          <%# Remove Image %>
+        <%# </label> %>
+      <%# </p> %>
+      <% end %>
 
         <div class="form-group text-center">
-          <%= image_tag current_user.avatar_url, alt: "Screenshot of Devs work" unless current_user.avatar_url.nil? %>
-          <%= f.file_field :avatar, class:"form-control" %>
+          <%= f.file_field :name, class:"form-control" %>
         </div>
 
+        <div class="actions">
+          <%= f.submit "Add Image" %>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
 <% end %>
-
-
-<%# 
-Image Model
-name = file name
-imageable_id = project id
-imageable_type = project 
-%>

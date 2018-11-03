@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "products", to: "products#index"
 
   resources :profiles, only: [:index, :show]
+  resources :images, only: [:create]
 
   get "projects/dashboard", to: "projects#dashboard"
 

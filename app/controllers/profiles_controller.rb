@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
 
   def show
     @dev = User.find(params[:id])
+    @images = @dev.images
     # @overall_rating = overall_rating
   end
 
