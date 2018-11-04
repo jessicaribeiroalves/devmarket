@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  enum status: {open: 0, ongoing: 1, completed: 2}
+  enum status: { open: 0, ongoing: 1, completed: 2 }
 
   belongs_to :user
   belongs_to :product
@@ -8,6 +8,5 @@ class Project < ApplicationRecord
 
   has_many :bids, dependent: :destroy
   has_one :rating, dependent: :destroy
-  has_many :images, as: :imageable
-  # mount_uploader :project_image, ProjectImageUploader  # use Image model instead
+  # has_many :images, as: :imageable
 end
