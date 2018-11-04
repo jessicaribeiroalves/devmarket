@@ -86,10 +86,14 @@
     <div class="col-sm-12 col-md-10 text-center bg-white">
       <h2 class="text-center">Show your work, upload a screenshot</h2>
 
-      <% current_user.images.each do |image| %>
-        <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
-        <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"btn btn-warning" %>
-      <% end%>
+      <div class="row justify-content-center">
+        <% current_user.images.each do |image| %>
+          <div class="col-sm-12 col-md-4 bg-white">
+            <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
+            <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"btn btn-warning" %>
+          </div>
+        <% end%>
+      </div>
 
       <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
         <div class="form-group text-center">
