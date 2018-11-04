@@ -40,6 +40,11 @@ $secondary-bg-color:#A6ABB3;
 $header-font: 'Roboto', sans-serif;
 $body-font: 'Open Sans', sans-serif;
 
+#dev_header_1 {
+    color: #4169E1;
+      
+  }
+
 
  //// Links /////
  a, a:visited {
@@ -53,4 +58,9 @@ $body-font: 'Open Sans', sans-serif;
 body {
     scroll-behavior: smooth;
     font-family: $body-font;
+}
+
+//// Carousel Images /////
+.carousel img {
+    height: 500px;
 }

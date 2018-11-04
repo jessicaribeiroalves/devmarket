@@ -14,20 +14,20 @@
   )
 end
 
-1.times do |i|
-  User.create(
-    user_type: "client",
-    email: "clientpart#{i}@mail.com",
-    password: "password",
-  )
-end
+# 1.times do |i|
+#   User.create(
+#     user_type: "client",
+#     email: "clientpart#{i}@mail.com",
+#     password: "password",
+#   )
+# User.create(
+#   user_type: "dev",
+#   email: "devpart#{i}@mail.com",
+#   password: "password",
+# )
+# end
 
-5.times do |i|
-  User.create(
-    user_type: "dev",
-    email: "devpart#{i}@mail.com",
-    password: "password",
-  )
+20.times do |i|
   User.create(
     user_type: "dev",
     email: "devfull#{i}@mail.com",
@@ -44,26 +44,76 @@ Product.create(
   option: "Simple Website",
   price: 300,
   duration: 7,
+  description: "Simple Website",
 )
 Product.create(
   option: "Simple eCommerce Site",
   price: 1000,
   duration: 14,
+  description: "Simple eCommerce Site",
 )
 Product.create(
   option: "Basic Blog Site",
   price: 500,
   duration: 10,
+  description: "Basic Blog Site",
 )
 
-20.times do |x|
+10.times do
   Project.create(
+    price: rand(300..1000),
     title: Faker::Appliance.brand,
-    overview: Faker::Lorem.sentence(3),  
+    overview: Faker::Lorem.sentence(3),
     description: Faker::Lorem.paragraph(2),
-    product_id: rand(4),
     deadline: Faker::Business.credit_card_expiry_date,
-    user_id: 4,
-    price: Faker::Commerce.price
+    status: 0,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+10.times do
+  Project.create(
+    price: rand(300..1000),
+    title: Faker::Appliance.brand,
+    overview: Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph(2),
+    deadline: Faker::Business.credit_card_expiry_date,
+    status: 1,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+10.times do
+  Project.create(
+    price: rand(300..1000),
+    title: Faker::Appliance.brand,
+    overview: Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph(2),
+    deadline: Faker::Business.credit_card_expiry_date,
+    status: 2,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+
+50.times do
+  Bid.create(
+    status: -1,
+    project_id: rand(1..10),
+    user_id: rand(21..40),
+  )
+end
+50.times do
+  Bid.create(
+    status: 0,
+    project_id: rand(11..20),
+    user_id: rand(21..40),
+  )
+end
+50.times do
+  Bid.create(
+    status: 0,
+    project_id: rand(21..30),
+    user_id: rand(21..40),
   )
 end
