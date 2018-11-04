@@ -1,18 +1,18 @@
-<%# User Profile %>
+<%# User Profile - some details on Profile Show Page %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 bg-white">
-      <h2 class="text-center">Edit Profile</h2>
+    <div class="col-sm-12 col-md-8 col-lg-6 p-4 bg-white">
+      <h2 class="text-center p-2">Edit Profile</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), local: true, html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
         
-        <div class="form-group text-center">
+        <div class="form-group p-1 text-center">
           <%= image_tag current_user.avatar_url, alt: "User Avatar Picture" unless current_user.avatar_url.nil? %>
           <%= f.file_field :avatar, class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :email %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
@@ -21,32 +21,32 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :name %>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :company_name %>
           <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :bio %>
-          <%= f.text_field :bio, autofocus: true, autocomplete: "bio", class:"form-control" %>
+          <%= f.text_area :bio, autofocus: true, autocomplete: "bio", class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :city %>
           <%= f.text_field :city, autofocus: true, autocomplete: "city", class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :phone_number %>
           <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class:"form-control" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
           <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
           <small class="form-text text-muted">
@@ -59,52 +59,52 @@
           <%#= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
         <%# </div> %>
 
-        <div class="form-group">
+        <div class="form-group p-1">
           <%= f.label :current_password %> <i>(required to confirm your changes)</i>
           <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Update" %>
+        <div class="actions p-1">
+          <%= f.submit "Update", class:"actions btn btn-primary" %>
         </div>
       <% end %>
 
-      <h3>Cancel my account</h3>
+      <p><%= button_to "Unhappy? Delete my account forever", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"mt-1 btn-outline-danger btn-sm float-right" %></p>
 
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-      <%= link_to "Back", :back %>
+      <%= link_to "Back", :back, class:"mt-1 btn btn-outline-secondary btn-sm" %>
     </div>
   </div>
 </div>
 
 
-<%# Dev Portfolio %>
+<%# Dev Portfolio - Photos display on Profile Show Page %>
 <% if current_user.user_type == "dev" %>
-<div class="container">
+<div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-10 text-center bg-white">
+    <div class="col-sm-12 p-3 text-center bg-white">
       <h2 class="text-center">Show your work, upload a screenshot</h2>
 
       <div class="row justify-content-center">
         <% current_user.images.each do |image| %>
-          <div class="col-sm-12 col-md-4 bg-white">
+          <div class="card border-light col-sm-12 col-md-6 p-3 bg-white">
             <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
-            <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"btn btn-warning" %>
+            <div>
+              <%= link_to "Remove this image?", image_path(image), method: :delete, data: { confirm: 'Remove this image forever?' }, class:"card-text m-3 btn btn-warning" %>
+            </div>
           </div>
         <% end%>
       </div>
 
       <%= form_with(model: Image.new, url: images_path, local: true) do |f| %>
         <div class="form-group text-center">
-          <%= f.file_field :name, class:"form-control" %>
+          <%= f.file_field :name, class:"form-control mt-4" %>
         </div>
         <div class="actions">
-          <%= f.submit "Add Image" %>
+          <%= f.submit "Add New Image", class:"actions btn btn-primary my-2" %>
         </div>
       <% end %>
 
-      <%= link_to 'My Profile Page', profile_path(current_user), class:"btn btn-primary text-white" %>
+      <%= link_to 'My Profile Page', profile_path(current_user), class:"btn btn-outline-secondary btn-sm float-right" %>
     </div>
   </div>
 </div>

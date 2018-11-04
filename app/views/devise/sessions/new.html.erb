@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 bg-white">
-      <h2 class="text-center"> Log in</h2>
+    <div class="col-sm-12 col-md-8 col-lg-6 p-5 bg-white">
+      <h2 class="text-center">Log in</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
         <div class="form-group">
@@ -22,7 +22,7 @@
         <% end -%>
 
         <div class="actions">
-          <%= f.submit "Log in" %>
+          <%= f.submit "Log in", class:"actions btn btn-primary" %>
         </div>
       <% end %>
 

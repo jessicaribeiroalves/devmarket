@@ -35,7 +35,11 @@ end
     name: "Dev Full Profile",
     company_name: "Dev for You Inc.",
     phone_number: 287654321,
-    bio: "ninja dev, skilled in all tech",
+    bio: "I am ninja developer. Highly skilled in all areas of web development, you can count on me to get your projects done. I have over 3 years. I work along side my clients to understand exactly what they are looking for and deliver the right solution.
+    My Skills include:
+    Front-end: HTML, CSS, Bootstrap, JS
+    Back-end: Ruby on Rails, NodeJS, Wordpress, Shopify
+    Native English and excellent communication.",
     city: "Sydney",
   )
 end

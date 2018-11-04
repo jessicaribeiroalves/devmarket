@@ -8,5 +8,4 @@ class Project < ApplicationRecord
 
   has_many :bids, dependent: :destroy
   has_one :rating, dependent: :destroy
-  # has_many :images, as: :imageable
 end
