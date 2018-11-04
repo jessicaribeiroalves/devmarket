@@ -6,7 +6,9 @@
   </div> 
 
   <div class> 
-      <h2> In Progress Projects</h2>
+    <div id = "dev_header_1">
+      <h2> In Progress Projects </h2>
+    </div>
   </div>
 
     <table class="table table-striped">
@@ -19,20 +21,21 @@
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @in_progress.each do |project| %>
       <tr>
         <th scope="row">1</th>
         <td><%= project.title %></td>
         <td><%= project.overview %></td>
         <td><%= project.price %></td>
       </tr>
-    </div> 
   <% end %>
   </tbody>
   </table>
 
-  <div class"mt-4"> 
+  <div class"mt-5"> 
+    <div id = "dev_header_1">
       <h2> Active Bids </h2>
+    </div>
   </div>
 
   <table class="table table-striped">
@@ -45,7 +48,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @open.each do |project| %>
       <tr>
         <th scope="row">1</th>
         <td><%= project.title %></td>
@@ -56,8 +59,10 @@
     </tbody>
   </table>
 
-  <div class"mt-4"> 
+  <div class="mt-5"> 
+   <div id = "dev_header_1">
       <h2> Completed Projects </h2>
+   </div>
   </div>
 
   <table class="table table-striped">
@@ -70,7 +75,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @completed.each do |project| %>
       <tr>
         <th scope="row">1</th>
         <td><%= project.title %></td>
@@ -80,6 +85,7 @@
       <% end %>      
     </tbody>
   </table>
+</div>
   
  
     
