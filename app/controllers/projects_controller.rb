@@ -5,8 +5,6 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
   before_action :set_project, only: [:show, :status_complete]
 
-  # Show all projects
-
   def index
       @projects = Project.all
   end
