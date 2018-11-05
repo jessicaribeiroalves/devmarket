@@ -66,13 +66,14 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def status_complete # For Clients
-    project = Project.find(params[:id])
-    if project.ongoing?
-      project.completed!
-      redirect_to projects_dashboard_path
+  # Changing the project status to 'Completed' when client clicks on completed button
+  def status_complete
+    if @project.ongoing?
+      @project.completed!
     end
+    redirect_to projects_dashboard_path, notice: "Project completed!"
   end
+
 
   private
 
