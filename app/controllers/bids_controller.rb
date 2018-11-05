@@ -34,8 +34,6 @@ class BidsController < ApplicationController
       bid.save
     end
 
-
-
     # what happens on dev's dashboard when client accepts a bid ?
 
     flash[:notice] = "Bid accepted!"
