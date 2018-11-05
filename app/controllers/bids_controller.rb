@@ -1,11 +1,5 @@
 class BidsController < ApplicationController
   def create
-
-    @bid = Bid.new 
-    @bid.project_id = params[:project_id]
-    @bid.user_id = current_user.id
-    @bid.save
-    
     # To place a bid - user must a dev and not already have a bid
     if current_user.user_type == "dev" && current_user.bids.find_by(:project_id => params[:project_id]) == nil
       @bid = Bid.new
