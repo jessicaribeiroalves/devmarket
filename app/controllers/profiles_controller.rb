@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @images = @dev.images
+    @images = @dev.images # portfolio images
     @overall_rating = @dev.overall_rating
     @ratings = list_ratings
   end

@@ -41,6 +41,7 @@
         <th scope="col">#</th>
         <th scope="col">Project ID</th>
         <th scope="col">Bid Status</th>
+        <th scope="col">Cancel Bid?</th>
       </tr>
     </thead>
     <tbody>
@@ -50,6 +51,7 @@
         <th scope="row">1</th>
         <td><%= bid.project_id %></td>
         <td><%= bid.status %></td>
+        <td><%= link_to "Cancel bid?", cancel_bid_project_path(bid), method: :post, data: { confirm: 'Are you sure you want to cancel this bid?' }, class:"btn btn-outline-danger" %></td>
       </tr>
       <% end %>      
     </tbody>
