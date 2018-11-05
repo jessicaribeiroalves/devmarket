@@ -4,6 +4,9 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :status_complete]
 
   def index
+    @product_1 = Product.find_by(option: "Basic Website")
+    @product_2 = Product.find_by(option: "Ecommerce Website")
+    @product_3 = Product.find_by(option: "Blog Site")
     @products = Product.all # for filtering options
     # ordered projects from oldest to newest, limit 20 results
     @projects = if params[:filter].present?
