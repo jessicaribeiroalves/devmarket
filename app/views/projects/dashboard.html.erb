@@ -26,7 +26,13 @@
 
               <div id="collapse<%= index.to_s %>" class="collapse show" aria-labelledby="heading<%= index.to_s %>"    data-parent="#accordion">
                 <div class="card-body">
-                  Bid<%= index.to_s %>
+                  <% if project.bids.empty?%>
+                    <%= "No bids yet" %>
+                  <% else %>
+                    <% project.bids.each do |bid| %>
+                      <button class="btn btn-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post %></button>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>

@@ -28,8 +28,10 @@
           <label for="project_price"><strong>Project Price</strong></label>
           <p class="card-text"><%= project.price %></p>
           <label for="project_status"><strong>Project Status</strong></label>
-          <p class="card-text"><%= link_to "More Info", project_path(project) %></p>               
-          <%= link_to "BID", project_bids_path(project), method: :post %>
+          <p class="card-text"><%= link_to "More Info", project_path(project) %></p>
+          <% if current_user.user_type == "dev" %>               
+            <%= link_to "BID", project_bids_path(project), method: :post %>
+          <% end %>
        </div>
     </div>
   </div>
@@ -37,6 +39,7 @@
 </div>
 
   <%= link_to "Back Home", root_path %>
+
   <%= link_to "Create your project with us!", products_path %>
 
 <% if user_signed_in? %>
@@ -47,7 +50,4 @@
   <%= link_to "Sign Up", new_user_registration_path %>
   <%= link_to "Login", new_user_session_path %>
 <% end %> 
-
-
-
 

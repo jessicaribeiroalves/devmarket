@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   resources :images, only: [:create, :destroy]
 
   get 'projects/dashboard', to: 'projects#dashboard'
+  post 'projects/dashboard', to: 'bids#accept_bid'
+  
   get 'projects/dashboard_developer', to: 'projects#dashboard_developer'
 
+
+
   resources :projects do
-    resources :bids, only: [:create]
+    resources :bids
     resources :ratings, only: [:create]
     member do
       post "status_complete", to: "projects#status_complete"
