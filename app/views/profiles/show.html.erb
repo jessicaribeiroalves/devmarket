@@ -61,23 +61,23 @@
         </div>
     </div>
     <%# <div class="row justify-content-center p-3"> %>
-        <div class="card-deck">
-            <% if @ratings.empty? %>
+    <div class="card-deck">
+        <% if @ratings.empty? %>
+            <div class="card">
+                <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
+            </div>
+        <% else %>
+            <% @ratings.each do |rating| %>
                 <div class="card">
-                    <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
-                </div>
-            <% else %>
-                <% @ratings.each do |rating| %>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Rating: <%= rating.rate %> out of 5</h5>
-                            <p class="card-text"><%= rating.testimony %></p>
-                            <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
-                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Rating: <%= rating.rate %> out of 5</h5>
+                        <p class="card-text"><%= rating.testimony %></p>
+                        <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
                     </div>
-                <% end %>
+                </div>
             <% end %>
-        </div>
+        <% end %>
+    </div>
 
     <%# </div> %>
     <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
