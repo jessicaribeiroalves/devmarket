@@ -102,7 +102,7 @@ end
 
 50.times do
   Bid.create(
-    status: -1,
+    status: 0,
     project_id: rand(1..10),
     user_id: rand(21..40),
   )
