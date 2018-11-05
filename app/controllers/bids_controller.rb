@@ -21,19 +21,28 @@ class BidsController < ApplicationController
     end
   end
   
-  # Accepting bids from devs on client's dashboard
+  # Accepting a bid from dev on client's dashboard
   def accept_bid
     @accepted_bid = Bid.find(params[:bid_id])
     @accepted_bid.status = 1
     @accepted_bid.save
 
+    # Changing the project status to 'In Progress' and setting the project deadline
     @project = Project.find(params[:project_id])
     @project.status = 1
+    @project.deadline = Date.today + Product.find(@project.product_id).duration
     @project.save
 
-    # @rejected_bids = Bid.find(:all, :conditions => { :project_id => @project.id, :status => 0 })
-    # @rejected_bids.status = 2
-    # @rejected_bids.save
+    # Rejecting all other project bids
+    @rejected_bids = Bid.where(:project_id => @project.id, :status => 0)
+    @rejected_bids.each do |bid|
+      bid.status = 2
+      bid.save
+    end
+
+
+
+    # what happens on dev's dashboard when client accepts a bid ?
 
     flash[:notice] = "Bid accepted!"
     redirect_to projects_dashboard_path

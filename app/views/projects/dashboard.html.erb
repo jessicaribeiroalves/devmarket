@@ -30,7 +30,7 @@
                     <%= "No bids yet" %>
                   <% else %>
                     <% project.bids.each do |bid| %>
-                      <button class="btn btn-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post %></button>
+                      <button class="btn btn-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post %>Bid <%= bid.id %></button>
                     <% end %>
                   <% end %>
                 </div>
@@ -51,6 +51,7 @@
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
       <th scope="col">Developer working on the project</th>
+      <th scope="col">Check Status</th>
     </tr>
   </thead>
   <tbody>
@@ -59,6 +60,7 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
+        <td><button class="btn btn-success">Completed</button>
       </tr>
     <% end %>
   </tbody>
