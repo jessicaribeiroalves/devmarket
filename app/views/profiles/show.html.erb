@@ -30,55 +30,57 @@
     </div>
 </div>
 
-<%# Dev can upload images of their works (thumbnails => full; max 6) %>
-<div class="container my-3 bg-white">
-    <div class="row justify-content-center p-3">
-        <div class="col-sm-12">
-            <h2 class="text-center">Portfolio</h2>
-        </div>
-    </div>
-    <div class="row justify-content-center p-3">
-        <% if @images.empty? %>
-            <div class="card">
-                <h5 class="card-body text-center">Nothing to see yet</h5>
+<% if @dev.user_type == "dev" %>
+    <%# Dev can upload images of their works (thumbnails => full; max 6) %>
+    <div class="container my-3 bg-white">
+        <div class="row justify-content-center p-3">
+            <div class="col-sm-12">
+                <h2 class="text-center">Portfolio</h2>
             </div>
-        <% else %>
-            <% @images.each do |image| %>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                <%# <%= image_tag image.name_url , alt: "Screenshot of Devs work" unless image.name_url.nil? %>
-                <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
-                </div>
-            <% end %>
-        <% end %>
-    </div>
-</div>
-
-<%# List of Dev’s reviews %>
-<div class="container my-3 bg-white">
-    <div class="row justify-content-center p-3">
-        <div class="col-sm-12">
-            <h2 class="text-center">Reviews</h2>
         </div>
-    </div>
-    <%# <div class="row justify-content-center p-3"> %>
-    <div class="card-deck">
-        <% if @ratings.empty? %>
-            <div class="card">
-                <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
-            </div>
-        <% else %>
-            <% @ratings.each do |rating| %>
+        <div class="row justify-content-center p-3">
+            <% if @images.empty? %>
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Rating: <%= rating.rate %> out of 5</h5>
-                        <p class="card-text"><%= rating.testimony %></p>
-                        <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
-                    </div>
+                    <h5 class="card-body text-center">Nothing to see yet</h5>
                 </div>
+            <% else %>
+                <% @images.each do |image| %>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                    <%# <%= image_tag image.name_url , alt: "Screenshot of Devs work" unless image.name_url.nil? %>
+                    <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
+                    </div>
+                <% end %>
             <% end %>
-        <% end %>
+        </div>
     </div>
 
-    <%# </div> %>
-    <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
-</div>
+    <%# List of Dev’s reviews %>
+    <div class="container my-3 bg-white">
+        <div class="row justify-content-center p-3">
+            <div class="col-sm-12">
+                <h2 class="text-center">Reviews</h2>
+            </div>
+        </div>
+        <%# <div class="row justify-content-center p-3"> %>
+        <div class="card-deck">
+            <% if @ratings.empty? %>
+                <div class="card">
+                    <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
+                </div>
+            <% else %>
+                <% @ratings.each do |rating| %>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Rating: <%= rating.rate %> out of 5</h5>
+                            <p class="card-text"><%= rating.testimony %></p>
+                            <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+
+        <%# </div> %>
+        <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
+    </div>
+<% end %>
