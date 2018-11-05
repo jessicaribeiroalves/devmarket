@@ -40,17 +40,17 @@ class ProjectsController < ApplicationController
 
   # Client's Dashboard
   def dashboard
-    @open = Project.where(:status => 0)
-    @ongoing = Project.where(:status => 1)
-    @completed = Project.where(:status => 2)
+    @open = Project.where("user_id = #{current_user.id} AND status = 0")
+    @ongoing = Project.where("user_id = #{current_user.id} AND status = 1")
+    @completed = Project.where("user_id = #{current_user.id} AND status = 2")
   end
 
   # Developer's Dashboard
   def dashboard_developer
-    @pending_bids = Bid.all
-    @open = Project.where(:status => 0)
-    @ongoing = Project.where(:status => 1)
-    @completed = Project.where(:status => 2)
+    @pending_bids = Bid.where("user_id = #{current_user.id} AND status = 0")
+    @accepted_bids = Bid.where("user_id = #{current_user.id} AND status = 1")
+    # @ongoing = Project.where("user_id = #{current_user.id} AND status = 1")
+    @completed = Project.where("user_id = #{current_user.id} AND status = 2")
   end
 
   def status_complete
