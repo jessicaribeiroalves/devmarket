@@ -1,19 +1,22 @@
 
 <div class="container">
-    <div class="header text-center mb-3">
-        <h1>Recent Projects</h1>
-    </div>
-      
-  <div class="header mb-3">
-    <h1 class="text-center ">Recent Projects</h1>
-        <%# Filter Projects by Type %>
+  <div class="header text-center mb-3">
+    <h1>Recent Projects</h1>
+  </div>   
+    <div class="header mb-3">
+      <%# Filter Projects by Type %>
         <div class="">
           <%= form_with url: projects_path, method: :get, local: true do |form| %> 
-            <%= form.select :filter, @products.collect {|p| [p.option, p.id]} %>
-            <%= form.submit 'Filter Projects' %>
-          <% end %>
+          <%= form.select :filter, @products.collect {|p| [p.option, p.id]} %>
+          <%= form.submit 'Filter Projects' %>
+      <% end %>
         </div>
     </div>
+
+  <div class="mb-3">
+      <%= link_to "Back Home", root_path %>
+      <%= link_to "Create your project with us!", products_path %>
+  </div>
 
 <%# List of All Projects %>
   <div class="row">
@@ -32,21 +35,18 @@
             <label for="project_price"><strong>Project Price</strong></label>
             <p class="card-text"><%= @product_1.price %></p>
             <p class="card-text"><%= link_to "Tell Me More...", project_path(project) %></p>   
-              <div> 
-                <% if current_user.user_type == "dev" %>            
-                  <%= link_to "BID", project_bids_path(project), method: :post %>
-                  <button type="button" class="close btn btn-primary">
-                  <%= link_to "BID", project_bids_path(@project), method: :post %>
-                  </button>
-                  <% end %> 
+              <div>
+                <%= link_to "BID", project_bids_path(project), method: :post %>
+                <button type="button" class="close btn btn-primary">
+                </button>
               </div>
             </div>
        </div>
     <% end %>
+</div>
+</div>
 
-  <%= link_to "Back Home", root_path %>
-
-  <%= link_to "Create your project with us!", products_path %>
+ 
 
 
 
