@@ -13,25 +13,23 @@
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Project Title</th>
-        <th scope="col">Project Status</th>
-        <th scope="col">Project Fee</th>
+        <th scope="col">Project ID</th>
+        <th scope="col">Bid Status</th>
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @accepted_bids.each do |bid| %>
       <tr>
         <th scope="row">1</th>
-        <td><%= project.title %></td>
-        <td><%= project.overview %></td>
-        <td><%= project.price %></td>
+        <td><%= bid.project_id %></td>
+        <td><%= bid.status %></td>
       </tr>
     </div> 
   <% end %>
   </tbody>
   </table>
 
-  <div class"mt-4"> 
+  <div class="mt-4"> 
       <h2> Active Bids </h2>
   </div>
 
@@ -39,24 +37,22 @@
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Project Title</th>
-        <th scope="col">Project Status</th>
+        <th scope="col">Project ID</th>
         <th scope="col">Bid Status</th>
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @pending_bids.each do |bid| %>
       <tr>
         <th scope="row">1</th>
-        <td><%= project.title %></td>
-        <td><%= project.overview %></td>
-        <td><%= project.price %></td>
+        <td><%= bid.project_id %></td>
+        <td><%= bid.status %></td>
       </tr>
       <% end %>      
     </tbody>
   </table>
 
-  <div class"mt-4"> 
+  <div class="mt-4"> 
       <h2> Completed Projects </h2>
   </div>
 
@@ -70,7 +66,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
+      <% @completed.each do |project| %>
       <tr>
         <th scope="row">1</th>
         <td><%= project.title %></td>
