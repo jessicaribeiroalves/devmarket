@@ -1,0 +1,15 @@
+<h1>Meet the Developers</h1>
+
+<div class="row d.-flex">
+    <% @devs.each do |dev| %>
+        <div class="card mb-3 rounded p-5 mr-3 col-sm-3 text-center">
+            <%= link_to profile_path(dev) do %>
+                <%= image_tag dev.avatar_url, alt: "User Avatar Picture" unless dev.avatar_url.nil? %>
+                <div class="card-body">
+                    <h5 class="card-title"> <td><%= dev.name %></h5>
+                    <p class="card-text"><%= dev.city %></p>
+                </div>
+            <% end %>            
+        </div>
+  <% end %>
+</div>
