@@ -14,20 +14,20 @@
   )
 end
 
-1.times do |i|
-  User.create(
-    user_type: "client",
-    email: "clientpart#{i}@mail.com",
-    password: "password",
-  )
-end
+# 1.times do |i|
+#   User.create(
+#     user_type: "client",
+#     email: "clientpart#{i}@mail.com",
+#     password: "password",
+#   )
+# User.create(
+#   user_type: "dev",
+#   email: "devpart#{i}@mail.com",
+#   password: "password",
+# )
+# end
 
-5.times do |i|
-  User.create(
-    user_type: "dev",
-    email: "devpart#{i}@mail.com",
-    password: "password",
-  )
+20.times do |i|
   User.create(
     user_type: "dev",
     email: "devfull#{i}@mail.com",
@@ -35,7 +35,11 @@ end
     name: "Dev Full Profile",
     company_name: "Dev for You Inc.",
     phone_number: 287654321,
-    bio: "ninja dev, skilled in all tech",
+    bio: "I am ninja developer. Highly skilled in all areas of web development, you can count on me to get your projects done. I have over 3 years. I work along side my clients to understand exactly what they are looking for and deliver the right solution.
+    My Skills include:
+    Front-end: HTML, CSS, Bootstrap, JS
+    Back-end: Ruby on Rails, NodeJS, Wordpress, Shopify
+    Native English and excellent communication.",
     city: "Sydney",
   )
 end
@@ -44,31 +48,77 @@ Product.create(
   option: "Basic Website",
   price: 500,
   duration: 21,
-  description: "Build a beautiful, mobile friendly website to supercharge your business"
+  description: "Build a beautiful, mobile friendly website to supercharge your business"  
 )
 Product.create(
   option: "Ecommerce Website",
   price: 1000,
   duration: 28,
   description: "Build an online, 24/7 online shop to sell your services to new clients"
-
 )
 Product.create(
   option: "Blog Site",
   price: 200,
   duration: 10,
   description: "Build a blog to attract customers and build your expertise online"
-
 )
 
-20.times do |x|
-  Project.create(services
+
+10.times do
+  Project.create(
+    price: rand(300..1000),
     title: Faker::Appliance.brand,
-    overview: Faker::Lorem.sentence(3),  
+    overview: Faker::Lorem.sentence(3),
     description: Faker::Lorem.paragraph(2),
-    product_id: rand(4),
     deadline: Faker::Business.credit_card_expiry_date,
-    user_id: 4,
-    price: Faker::Commerce.price
+    status: 0,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+10.times do
+  Project.create(
+    price: rand(300..1000),
+    title: Faker::Appliance.brand,
+    overview: Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph(2),
+    deadline: Faker::Business.credit_card_expiry_date,
+    status: 1,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+10.times do
+  Project.create(
+    price: rand(300..1000),
+    title: Faker::Appliance.brand,
+    overview: Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph(2),
+    deadline: Faker::Business.credit_card_expiry_date,
+    status: 2,
+    user_id: rand(21..40), #FIXME should be client types
+    product_id: rand(1..3),
+  )
+end
+
+50.times do
+  Bid.create(
+    status: 0,
+    project_id: rand(1..10),
+    user_id: rand(21..40),
+  )
+end
+50.times do
+  Bid.create(
+    status: 0,
+    project_id: rand(11..20),
+    user_id: rand(21..40),
+  )
+end
+50.times do
+  Bid.create(
+    status: 0,
+    project_id: rand(21..30),
+    user_id: rand(21..40),
   )
 end
