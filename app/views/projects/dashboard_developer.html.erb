@@ -6,7 +6,9 @@
   </div> 
 
   <div class> 
-      <h2> In Progress Projects</h2>
+    <div id = "dev_header_1">
+      <h2> In Progress Projects </h2>
+    </div>
   </div>
 
     <table class="table table-striped">
@@ -18,13 +20,13 @@
       </tr>
     </thead>
     <tbody>
+
       <% @accepted_bids.each do |bid| %>
       <tr>
         <th scope="row">1</th>
         <td><%= bid.project_id %></td>
         <td><%= bid.status %></td>
       </tr>
-    </div> 
   <% end %>
   </tbody>
   </table>
@@ -42,6 +44,7 @@
       </tr>
     </thead>
     <tbody>
+      
       <% @pending_bids.each do |bid| %>
       <tr>
         <th scope="row">1</th>
@@ -76,6 +79,7 @@
       <% end %>      
     </tbody>
   </table>
+</div>
   
  
     

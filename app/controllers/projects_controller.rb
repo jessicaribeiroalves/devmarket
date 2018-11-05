@@ -4,7 +4,13 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :status_complete]
 
   def index
-    @projects = Project.all
+    @products = Product.all # for filtering options
+    # ordered projects from oldest to newest, limit 20 results
+    @projects = if params[:filter].present?
+                  Project.where(:product_id => params[:filter]).order(updated_at: "asc").limit(20)
+                else
+                  Project.all.order(updated_at: "asc").limit(20)
+                end
   end
 
   def new
@@ -19,9 +25,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @rating = Rating.new # for creating a new rating - client
+    # @rating = Rating.new # for creating a new rating - client
     @rated = @project.rating # for showing an existing rating
+
     @bid = Bid.new # for creating a new bid - devs
+    @bids = @project.bids # bids for this project
+    if @project.bids.find_by(:status => 2) != nil # check if there accepted bid
+      @accepted_dev = @project.bids.find_by(:status => 2).user
+    end
   end
 
   # Client's Dashboard
@@ -31,7 +42,7 @@ class ProjectsController < ApplicationController
     @completed = Project.where("user_id = #{current_user.id} AND status = 2")
   end
 
-   # Developer's Dashboard
+  # Developer's Dashboard
   def dashboard_developer
     @pending_bids = Bid.where("user_id = #{current_user.id} AND status = 0")
     @accepted_bids = Bid.where("user_id = #{current_user.id} AND status = 1")
