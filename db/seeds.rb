@@ -48,21 +48,20 @@ Product.create(
   option: "Basic Website",
   price: 500,
   duration: 21,
-  description: "Build a beautiful, mobile friendly website to supercharge your business"  
+  description: "Build a beautiful, mobile friendly website to supercharge your business",
 )
 Product.create(
   option: "Ecommerce Website",
   price: 1000,
   duration: 28,
-  description: "Build an online, 24/7 online shop to sell your services to new clients"
+  description: "Build an online, 24/7 online shop to sell your services to new clients",
 )
 Product.create(
   option: "Blog Site",
   price: 200,
   duration: 10,
-  description: "Build a blog to attract customers and build your expertise online"
+  description: "Build a blog to attract customers and build your expertise online",
 )
-
 
 10.times do
   Project.create(
@@ -72,7 +71,7 @@ Product.create(
     description: Faker::Lorem.paragraph(2),
     deadline: Faker::Business.credit_card_expiry_date,
     status: 0,
-    user_id: rand(21..40), #FIXME should be client types
+    user_id: rand(1..20),
     product_id: rand(1..3),
   )
 end
@@ -84,7 +83,7 @@ end
     description: Faker::Lorem.paragraph(2),
     deadline: Faker::Business.credit_card_expiry_date,
     status: 1,
-    user_id: rand(21..40), #FIXME should be client types
+    user_id: rand(1..20),
     product_id: rand(1..3),
   )
 end
@@ -96,7 +95,7 @@ end
     description: Faker::Lorem.paragraph(2),
     deadline: Faker::Business.credit_card_expiry_date,
     status: 2,
-    user_id: rand(21..40), #FIXME should be client types
+    user_id: rand(1..20),
     product_id: rand(1..3),
   )
 end

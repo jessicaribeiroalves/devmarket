@@ -8,6 +8,7 @@
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
       <th scope="col">Bids</th>
+      <th scope="col">Cancel Project?</th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +38,9 @@
               </div>
             </div>
           </div>
+        </td>
+        <td>
+          <%= link_to "Cancel bid?", cancel_project_project_path(project), method: :post, data: { confirm: 'Are you sure you want to cancel this project?' }, class:"btn btn-outline-danger" %>
         </td>
       </tr>
     <% end %>
