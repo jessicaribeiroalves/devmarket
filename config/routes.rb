@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :bids
     resources :ratings, only: [:create]
     member do
-      post "status_complete", to: "projects#status_complete"
+     post "status_complete", to: "projects#status_complete"
     end
   end
 end
