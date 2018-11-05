@@ -41,23 +41,28 @@ end
 end
 
 Product.create(
-  option: "Simple Website",
-  price: 300,
-  duration: 7,
-)
-Product.create(
-  option: "Simple eCommerce Site",
-  price: 1000,
-  duration: 14,
-)
-Product.create(
-  option: "Basic Blog Site",
+  option: "Basic Website",
   price: 500,
+  duration: 21,
+  description: "Build a beautiful, mobile friendly website to supercharge your business"
+)
+Product.create(
+  option: "Ecommerce Website",
+  price: 1000,
+  duration: 28,
+  description: "Build an online, 24/7 online shop to sell your services to new clients"
+
+)
+Product.create(
+  option: "Blog Site",
+  price: 200,
   duration: 10,
+  description: "Build a blog to attract customers and build your expertise online"
+
 )
 
 20.times do |x|
-  Project.create(
+  Project.create(services
     title: Faker::Appliance.brand,
     overview: Faker::Lorem.sentence(3),  
     description: Faker::Lorem.paragraph(2),

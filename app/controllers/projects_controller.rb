@@ -5,6 +5,11 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @products = Product.all
+    @product_1 = Product.find_by(option: "Basic Website")
+    @product_2 = Product.find_by(option: "Ecommerce Website")
+    @product_3 = Product.find_by(option: "Blog Site")
+     
   end
 
   def new
@@ -33,7 +38,7 @@ class ProjectsController < ApplicationController
 
    # Developer's Dashboard
   def dashboard_developer
-    @projects = Project.all
+    @pending_bids = Bid.all
     @open = Project.where(:status => 0)
     @ongoing = Project.where(:status => 1)
     @completed = Project.where(:status => 2)

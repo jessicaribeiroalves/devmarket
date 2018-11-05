@@ -16,12 +16,13 @@
         <p class="Project Deadline"><%= @project.deadline %></p>
         <label for="project_price"><strong>Project Price</strong></label>
         <p class="Project Price"><%= @project.price %></p>
-        <label for="project_status"><strong>Project Status</strong></label>
-        <p class="Project Status"><%= @project.status %></p>
           <div> 
-            <button type="button" class="close btn btn-primary">
-              <%= link_to "BID", project_bids_path(@project), method: :post %>
-            </button>
+            <% if current_user.user_type == "dev" %>            
+              <%= link_to "BID", project_bids_path(project), method: :post %>
+                <button type="button" class="close btn btn-primary">
+                <%= link_to "BID", project_bids_path(@project), method: :post %>
+                </button>
+            <% end %> 
           </div>
       </div>
   

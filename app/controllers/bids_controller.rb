@@ -10,6 +10,11 @@ class BidsController < ApplicationController
     redirect_to root_path
   end
 
+
+
+ - not a bid twice
+
+
 end
 
 
