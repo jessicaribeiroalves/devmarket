@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   # Authenticate user before accessing website
-  before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :status_complete]
 
   def index    
@@ -14,38 +14,55 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
-    @products = Product.all
+    if current_user.user_type == "client"
+      @project = Project.new
+      @products = Product.all
+    else
+      redirect_to root_path
+    end
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.user_id = current_user.id
-    @project.save
+    if current_user.user_type == "client"
+      @project = Project.new(project_params)
+      @project.user_id = current_user.id
+      @project.save
+    else
+      redirect_to root_path
+    end
   end
 
   def show
-    # @rating = Rating.new # for creating a new rating - client
+    @rating = Rating.new # for creating a new rating - client
     @rated = @project.rating # for showing an existing rating
 
     @bid = Bid.new # for creating a new bid - devs
     @bids = @project.bids # bids for this project
-    if @project.bids.find_by(:status => 2) != nil # check if there accepted bid
+
+    if @project.bids.find_by(:status => 1) != nil # check if there accepted bid
       @accepted_dev = @project.bids.find_by(:status => 1).user
     end
   end
 
   # Client's Dashboard
   def dashboard
-    @open = Project.where("user_id = #{current_user.id} AND status = 0")
-    @ongoing = Project.where("user_id = #{current_user.id} AND status = 1")
-    @completed = Project.where("user_id = #{current_user.id} AND status = 2")
+    if current_user.user_type == "client"
+      @open = Project.where("user_id = #{current_user.id} AND status = 0")
+      @ongoing = Project.where("user_id = #{current_user.id} AND status = 1")
+      @completed = Project.where("user_id = #{current_user.id} AND status = 2")
+    else
+      redirect_to root_path
+    end
   end
 
   # Developer's Dashboard
   def dashboard_developer
-    @pending_bids = Bid.where("user_id = #{current_user.id} AND status = 0")
-    @accepted_bids = Bid.where("user_id = #{current_user.id} AND status = 1")
+    if current_user.user_type == "dev"
+      @pending_bids = Bid.where("user_id = #{current_user.id} AND status = 0")
+      @accepted_bids = Bid.where("user_id = #{current_user.id} AND status = 1")
+    else
+      redirect_to root_path
+    end
   end
 
   def cancel_bid # For Developers

@@ -48,9 +48,13 @@
                 </p>
                   <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
             </div>
-          </div>
-        <% end %>
-      <% end %>
+
+          <% end %>
+          <%# --- Completed Project-Not Yet Rated--- %>
+          <% if @project.rating == nil && current_user.id == @project.user_id %>
+            <%= render "ratings/form", project: @project, rating: @rating %>
+          <% end %>
+        <% end  %>
 
     <%# --- FOR Dev to Place their Bid --- %>
       <% if user_signed_in? %>
