@@ -1,3 +1,4 @@
+<%# --- Page Showing all Projects --- %>
 <div>
   <div class="container">
     <div class="header text-center mb-3">
@@ -16,6 +17,9 @@
         </button>
       </div>
     </div>
+
+<%# --- Filter Projects by Type  --- %>
+
     <div class="header mb-3">
       <%# Filter Projects by Type %>
         <div class="">
@@ -25,9 +29,10 @@
           <% end %>
         </div>
     </div>
+     
+  <%# --- List of all Projects  --- %>
 
-    <div class="mb-3">
-      <%# List of All Projects %>
+  <div class="mb-3">
     <div class="row">
       <% @projects.each do |project| %>
         <div class="card mb-2 p-2 col-sm-6 col-md-4">
@@ -38,19 +43,18 @@
           <% else project.product_id == 3 %>
             <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
           <% end %>
-
-          <div class="card-body">
-            <label for="project_title"><strong>Project Title</strong></label>
-            <p class="card-title"><%= project.title %></p>  
-            <label for="project_overview"><strong>Project Overview</strong></label>
-            <p class="card-text"><%= project.overview %></p>
-            <label for="project_description"><strong>Project Description</strong></label>
-            <p class="card-text"><%= project.description %></p>
-            <label for="project_price"><strong>Project Price</strong></label>
-            <p class="card-text"><%= project.price %></p>
-            <p class="card-text"><%= link_to "Tell Me More...", project_path(project) %></p>   
-            <div>
-              <%# FOR Dev to place their bid %>
+            <div class="card-body">
+              <label for="project_title"><strong>Project Title</strong></label>
+              <p class="card-title"><%= project.title %></p>  
+              <label for="project_overview"><strong>Project Overview</strong></label>
+              <p class="card-text"><%= project.overview %></p>
+              <label for="project_description"><strong>Project Description</strong></label>
+              <p class="card-text"><%= project.description %></p>
+              <label for="project_price"><strong>Project Price</strong></label>
+              <p class="card-text"><%= project.price %></p>
+              <p class="card-text"><%= link_to "Tell Me More...", project_path(project) %></p>   
+              <div>
+               <%# FOR Dev to place their bid %>
                 <% if user_signed_in? %>
                   <% if current_user.user_type == "dev" && project.status == "open" %>
                     <div class="row card-body">
@@ -60,17 +64,16 @@
                     </div>
                   <% end %>
                 <% end %>
+               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-    </div>
-
+    
   </div>
 </div>
 
- 
 
 
 
