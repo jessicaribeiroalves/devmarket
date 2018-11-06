@@ -15,7 +15,6 @@
   <table class="table table-striped">
     <thead class="thead-light">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Project ID</th>
         <th scope="col">Project Title</th>
         <th scope="col">Deadline</th>
@@ -26,7 +25,6 @@
       <% @accepted_bids.each do |bid| %>
         <% if bid.status == "accepted" && bid.project.status == "ongoing" %>
           <tr>
-            <th scope="row">1</th>
             <td><%= bid.project_id %></td>
             <td><%= bid.project.title %></td>
             <td><%= bid.project.deadline%></td>
@@ -45,7 +43,6 @@
   <table class="table table-striped">
     <thead class="thead-light">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Project ID</th>
         <th scope="col">Project Title</th>
         <th scope="col">Bid Status</th>
@@ -56,7 +53,6 @@
       <% @pending_bids.each do |bid| %>
         <% if bid.status == "pending" && bid.project.status == "open" %>
           <tr>
-            <th scope="row">1</th>
             <td><%= bid.project_id %></td>
             <td><%= bid.project.title %></td>
             <td><%= bid.status %></td>
@@ -75,7 +71,7 @@
   <table class="table table-striped">
     <thead class="thead-light">
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Project ID</th>
         <th scope="col">Project Title</th>
         <th scope="col">Project Overview</th>
         <th scope="col">Rating</th>
@@ -85,7 +81,7 @@
       <% @accepted_bids.each do |bid| %>
         <% if bid.status == "accepted" && bid.project.status == "completed" %>
           <tr>
-            <th scope="row">1</th>
+            <td><%= bid.project_id %></td>
             <td><%= bid.project.title %></td>
             <td><%= bid.project.overview %></td>
             <%# <td><%= bid.project.price %>
