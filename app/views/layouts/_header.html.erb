@@ -6,12 +6,18 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
       <% if current_user %>{ For testing only User ID: <%= current_user.id%>| Type: <%= current_user.user_type%> } <% end  %> 
-      <%= link_to 'How it Works', root_path(anchor: 'how-it-works'), class:"text-primary" %>
+      <%= link_to 'How it Works', root_path(anchor: 'how-it-works'), class:"text-primary" unless user_signed_in? %>
       <%= link_to 'Projects', projects_path, class:"text-primary" %>
-      <%= link_to 'Register', new_user_registration_path, class:"text-primary" unless user_signed_in? %>
-      <%= link_to 'Log In', new_user_session_path, class:"text-primary" unless user_signed_in? %>    
-      <%= link_to 'Edit Profile', edit_user_registration_path, class:"text-primary" if current_user %>
-      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"text-primary" if current_user %>
+
+      <%= link_to 'Register', new_user_registration_path, class:"text-secondary" unless user_signed_in? %>
+      <%= link_to 'Log In', new_user_session_path, class:"text-primary" unless user_signed_in? %>
+
+      <% if user_signed_in? %>
+        <%= link_to 'Dashboard', projects_dashboard_developer_path, class:"text-primary" if current_user.user_type == "dev" %>
+        <%= link_to 'Dashboard', projects_dashboard_path, class:"text-primary" if current_user.user_type == "client" %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class:"text-primary" %>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"text-primary" %>
+      <% end %>
     </div>
   </div>
 </nav>

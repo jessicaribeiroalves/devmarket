@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "public#index"
+  get "/about", to: "public#about"
+  get "/legal", to: "public#legal"
+
   devise_for :users, path: "", path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
 
   get "products", to: "products#index"
