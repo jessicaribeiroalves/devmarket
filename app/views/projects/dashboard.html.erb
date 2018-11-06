@@ -51,6 +51,7 @@
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
       <th scope="col">Developer working on the project</th>
+      <th scope="col">Deadline</th>
       <th scope="col">Check Status</th>
     </tr>
   </thead>
@@ -60,6 +61,7 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
+        <td><%= project.deadline %></td>
         <td><button class="btn btn-success">
         <% if current_user.id == project.user_id && project.status == "ongoing" %>
           <%= link_to "Project Complete?", status_complete_project_path(project), method: :post, data: { confirm: 'Project Complete'},class:"btn btn-warning" %>
