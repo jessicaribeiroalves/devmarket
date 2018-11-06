@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_action :authenticate_user!
   # TODO Authorization
 
   def create
@@ -10,7 +11,7 @@ class RatingsController < ApplicationController
         update_overall_rating
         format.html { redirect_to project_path(params[:project_id]), notice: "Thank you for helping others!" }
       else
-        format.html { render :new }
+        format.html { redirect_to project_path(params[:project_id]), notice: "Please rate your developer." }
       end
     end
   end

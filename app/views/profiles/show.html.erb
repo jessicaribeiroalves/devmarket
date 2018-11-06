@@ -16,7 +16,14 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <% if @overall_rating %>
-                        Average Rating <%= @overall_rating.round(2) %>
+                        <span class="card-title">Average Rating</span>
+                        <% @overall_rating.to_i.times do %>
+                            <i class="fas fa-star"></i>
+                        <% end %>
+                        <% (5 - @overall_rating.to_i).times do %>
+                            <i class="far fa-star"></i>
+                        <% end %>
+                        <%= @overall_rating.round(2) %>
                     <% else %>
                         No reviews yet
                     <% end %>
@@ -71,7 +78,13 @@
                 <% @ratings.each do |rating| %>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Rating: <%= rating.rate %> out of 5</h5>
+                            <span class="card-title">Rated</span>
+                                <% rating.rate.to_i.times do %>
+                                    <i class="fas fa-star"></i>
+                                <% end %>
+                                <% (5 - rating.rate.to_i).times do %>
+                                    <i class="far fa-star"></i>
+                                <% end %>
                             <p class="card-text"><%= rating.testimony %></p>
                             <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
                         </div>
