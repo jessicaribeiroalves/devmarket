@@ -1,27 +1,40 @@
-<%= form_with(model: [@project, @rating], local: true) do |form| %>
-  <% if @rating.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10 p-3 bg-white">
+      <h2 class="text-center">Rate your Developer and help others</h2>
 
-      <ul>
-      <% rating.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <%= form_with(model: [@project, @rating], local: true) do |form| %>
+        <% if @rating.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+            <ul>
+            <% rating.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.select :rate, options_for_select(
+            [["5 - Awesome, definitely hire again!", 5],
+            ["4 - Good work", 4], 
+            ["3 - Satisfaction", 3], 
+            ["2 - Not good", 2], 
+            ["1 - Never again", 1]]
+          ), :prompt => 'Rate' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :testimony %>
+          <%= form.text_area :testimony, class:"form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Rate!", class:"actions btn btn-primary" %>
+        </div>
+
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :rate %>
-    <%= form.number_field :rate %>
   </div>
-
-  <div class="field">
-    <%= form.label :testimony %>
-    <%= form.text_area :testimony %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

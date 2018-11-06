@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     @overall_rating = @dev.overall_rating
     @ratings = list_ratings
   end
-
+  
   private
 
   def set_dev

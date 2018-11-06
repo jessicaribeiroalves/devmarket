@@ -51,10 +51,10 @@
                 <div>
                   <%# --- FOR Dev to Place their Bid --- %>
                   <% if user_signed_in? %>
-                    <% if current_user.user_type == "dev" && @project.status == "open" %>
+                    <% if current_user.user_type == "dev" && project.status == "open" %>
                       <div class="row card-body">
                         <button type="button" class="close btn btn-primary">
-                          <%= link_to "BID", project_bids_path(@project), method: :post %>
+                          <%= link_to "BID", project_bids_path(project), method: :post %>
                         </button>
                       </div>
                     <% end %>

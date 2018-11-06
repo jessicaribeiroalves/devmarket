@@ -1,9 +1,14 @@
 class ProjectsController < ApplicationController
   # Authenticate user before accessing website
+<<<<<<< HEAD
+  before_action :authenticate_user!, :except => [:index]
+  before_action :set_project, only: [:show, :cancel_project, :status_complete]
+=======
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :status_complete]
+>>>>>>> 705dd3bdaa58eb1df83742929206ffe6dd3c1b91
 
-  def index    
+  def index
     @products = Product.all # for filtering options
     # # ordered projects from oldest to newest, limit 20 results
     @projects = if params[:filter].present?
@@ -38,7 +43,6 @@ class ProjectsController < ApplicationController
 
     @bid = Bid.new # for creating a new bid - devs
     @bids = @project.bids # bids for this project
-
     if @project.bids.find_by(:status => 1) != nil # check if there accepted bid
       @accepted_dev = @project.bids.find_by(:status => 1).user
     end
@@ -71,9 +75,8 @@ class ProjectsController < ApplicationController
   end
 
   def cancel_project # For Clients
-    project = Project.find(params[:id])
-    if project.open?
-      project.cancelled!
+    if @project.open?
+      @project.cancelled!
       redirect_to projects_dashboard_path, notice: "Project cancelled. Please contact the DevMarket team regarding your refund."
     end
   end
@@ -85,7 +88,6 @@ class ProjectsController < ApplicationController
     end
     redirect_to projects_dashboard_path, notice: "Project completed!"
   end
-
 
   private
 

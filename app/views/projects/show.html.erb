@@ -35,26 +35,30 @@
 
     <%# --- Show If Completed Project --- %>
       <% if @project.status == "completed" %>  
-        <span class="btn btn-success">Completed!</span>
+        <span class="btn btn-success disabled">Completed!</span>
 
         <%# --- Show If Project has Rating --- %>
-
-        <% if @project.rating != nil %>
-          <div class="card w-75">
+        <% if @project.rating %>
+          <div class="card">
             <div class="card-body">
-              <span class="card-title">Ratings:</span> <%= @rated.rate %>
-                <p class="card-text">
-                  <%= @rated.testimony %>
-                </p>
-                  <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
+              <span class="card-title">Rated</span>
+                <% @rated.rate.to_i.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - @rated.rate.to_i).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <p class="card-text">
+                <%= @rated.testimony %>
+              </p>
+              <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
             </div>
-
-          <% end %>
-          <%# --- Completed Project-Not Yet Rated--- %>
-          <% if @project.rating == nil && current_user.id == @project.user_id %>
-            <%= render "ratings/form", project: @project, rating: @rating %>
-          <% end %>
         <% end  %>
+        <%# --- Completed Project-Not Yet Rated--- %>
+        <% if @project.rating == nil && current_user.id == @project.user_id %>
+          <%= render "ratings/form", project: @project, rating: @rating %>
+        <% end %>
+      <% end  %>
 
     <%# --- FOR Dev to Place their Bid --- %>
       <% if user_signed_in? %>
@@ -67,7 +71,7 @@
         <% end %>
       <% end %>
         <div class="row justify-content-end">
-          <div class="mr-4 mb-2">
+          <div class="mr-4 my-3">
             <button type="button" class="btn btn-primary">
               <%= link_to "Back to Projects", projects_path %>
             </button>
