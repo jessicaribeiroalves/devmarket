@@ -5,14 +5,18 @@
 
   <div class="row">
     <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
-      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <% if @project.product_id == 1 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
+        <% elsif @project.product_id == 2 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
+        <% else @project.product_id == 3 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
+    <% end %>    
       <div class="card-body">
         <label for="project_overview"><strong>Project Overview</strong></label>
         <p class="project_overview"><%= @project.overview %></p>
         <label for="project_description"><strong>Project Description</strong></label>
         <p class="Project Description"><%= @project.description %></p>
-        <label for="project_deadline"><strong>Project Deadline</strong></label>
-        <p class="Project Deadline"><%= @project.deadline %></p>
         <label for="project_price"><strong>Project Price</strong></label>
         <p class="Project Price"><%= @project.price %></p>
         <label for="project_status"><strong>Project Status</strong></label>
