@@ -58,9 +58,24 @@ $body-font: 'Open Sans', sans-serif;
 body {
     scroll-behavior: smooth;
     font-family: $body-font;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.vh-100 {
+    min-height: calc(100vh - 300px);
 }
 
 //// Carousel Images /////
 .carousel img {
     height: 500px;
 }
+
+//// Footer /////
+#footer {
+    position: relative;
+    margin-top: -150px; /* negative value of footer height */
+    height: 150px;
+    clear: both;
+    padding-top: 20px;
+  } 

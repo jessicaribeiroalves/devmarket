@@ -1,3 +1,4 @@
+<div>
 <div class="container">
   <div class="header text-center mb-3">
     <h1>Project Information</h1>
@@ -20,11 +21,11 @@
 
         <%# --- Show If Completed Project --- %>
         <% if @project.status == "completed" %>  
-          <span class="btn btn-success">Completed!</span>
+          <span class="btn btn-success my-2">Completed!</span>
 
           <%# --- Show If Project has Rating--- %>
           <% if @project.rating != nil %>
-            <div class="card w-75">
+            <div class="card w-75 my-2">
               <div class="card-body">
                 <span class="card-title">Ratings:</span> <%= @rated.rate %>
                 <p class="card-text">
@@ -37,12 +38,14 @@
         <% end  %>
 
         <%# FOR Dev to place their bid %>
-        <% if current_user.user_type == "dev" && @project.status == "open" %>
-          <div class="row card-body">
-            <button type="button" class="close btn btn-primary">
-              <%= link_to "BID", project_bids_path(@project), method: :post %>
-            </button>
-          </div>
+        <% if user_signed_in? %>
+          <% if current_user.user_type == "dev" && @project.status == "open" %>
+            <div class="row card-body">
+              <button type="button" class="close btn btn-primary">
+                <%= link_to "BID", project_bids_path(@project), method: :post %>
+              </button>
+            </div>
+          <% end %>
         <% end %>
 
           <%# --- !!! CONTROL PANEL CLIENTS to be moved to Dashboard !!!! --- %>
@@ -103,4 +106,6 @@
     </div>
   <% end %>
   <%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %>
+</div>
+</div>
 </div>
