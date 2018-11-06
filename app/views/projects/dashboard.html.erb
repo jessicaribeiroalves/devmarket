@@ -88,28 +88,12 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
-        <%# <td> RATING LOGIC TO SHOW THE RATING FOR EACH PROJECT </td> %>
+        <td><% if project.rating != nil %>
+          <%= button_to project.rating.rate, project_path(project), :class => "btn btn-secondary btn-lg", :method => :get %>
+          <% else %>
+          <%= link_to "Rate this project", project_path(project), method: :get %>
+        <% end %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-                <%# --- Completed Project-Show Rating--- %>
-                <%# if @project.rating != nil %>
-                  <%# <div class="card w-75"> %>
-                    <%# <div class="card-body"> %>
-                      <%# <span class="card-title">Ratings:</span> = @rated.rate %>
-                      <%# <p class="card-text"> %>
-                        <%#= @rated.testimony %>
-                      <%# </p> %>
-                      <%# TODO: link to dev profile %>
-                      <%# <a href="#" class="btn btn-primary">To 'Dev' Profile</a> %>
-                    <%# </div> %>
-                  <%# </div> %>
-                <%# end %>
-                  
-                <%# --- Completed Project-Not Yet Rated--- %>
-                  <%# if @project.rating == nil && current_user.id == @project.user_id %>
-                      <%#= render "ratings/form", project: @project, rating: @rating %>
-                  <%# end %>
-              <%# end  %>

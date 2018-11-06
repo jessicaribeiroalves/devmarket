@@ -38,6 +38,10 @@
               </div>
             </div>
           <% end %>
+          <%# --- Completed Project-Not Yet Rated--- %>
+          <% if @project.rating == nil && current_user.id == @project.user_id %>
+            <%= render "ratings/form", project: @project, rating: @rating %>
+          <% end %>
         <% end  %>
 
         <%# FOR Dev to place their bid %>
