@@ -4,44 +4,54 @@
       <h1>Project Information</h1>
     </div>
 
-    <div class="row">
-      <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
+    <div class="row justify-content-end">
+      <div class="mr-4 mb-2">
+        <button type="button" class="btn btn-primary">
+          <%= link_to "Back to Projects", projects_path %>
+        </button>
+      </div>
+    </div>
+
+  <%# --- Show Single Project Page --- %>
+  <div class="row">
+    <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
       <% if @project.product_id == 1 %>
-            <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
-          <% elsif @project.product_id == 2 %>
-            <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
-          <% else @project.product_id == 3 %>
-            <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
+        <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
+      <% elsif @project.product_id == 2 %>
+        <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
+      <% else @project.product_id == 3 %>
+        <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
       <% end %>    
-        <div class="card-body">
-          <label for="project_overview"><strong>Project Overview</strong></label>
-          <p class="project_overview"><%= @project.overview %></p>
-          <label for="project_description"><strong>Project Description</strong></label>
-          <p class="Project Description"><%= @project.description %></p>
-          <label for="project_price"><strong>Project Price</strong></label>
-          <p class="Project Price"><%= @project.price %></p>
-          <label for="project_status"><strong>Project Status</strong></label>
-          <p class="Project Status"><%= @project.status %></p>
+      <div class="card-body">
+        <label for="project_overview"><strong>Project Overview</strong></label>
+        <p class="project_overview"><%= @project.overview %></p>
+        <label for="project_description"><strong>Project Description</strong></label>
+        <p class="Project Description"><%= @project.description %></p>
+        <label for="project_price"><strong>Project Price</strong></label>
+        <p class="Project Price"><%= @project.price %></p>
+        <label for="project_status"><strong>Project Status</strong></label>
+        <p class="Project Status"><%= @project.status %></p>
+      </div>
 
-          <%# --- Show If Completed Project --- %>
-          <% if @project.status == "completed" %>  
-            <span class="btn btn-success my-2">Completed!</span>
+    <%# --- Show If Completed Project --- %>
+    <div class="row">
+      <div class="mr-4 mb-2">
+        <% if @project.status == "completed" %>  
+          <div class="btn btn-success">Completed!</div>
 
-            <%# --- Show If Project has Rating--- %>
+          <%# --- Show If Project has Rating --- %>
             <% if @project.rating != nil %>
               <div class="card w-75 my-2">
                 <div class="card-body">
                   <span class="card-title">Ratings:</span> <%= @rated.rate %>
-                  <p class="card-text">
-                    <%= @rated.testimony %>
-                  </p>
+                  <p class="card-text"><%= @rated.testimony %></p>
                   <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
                 </div>
               </div>
             <% end %>
-          <% end  %>
+          <% end %>
 
-          <%# FOR Dev to place their bid %>
+        <%# --- FOR Dev to Place their Bid --- %>
           <% if user_signed_in? %>
             <% if current_user.user_type == "dev" && @project.status == "open" %>
               <div class="row card-body">
@@ -51,13 +61,21 @@
               </div>
             <% end %>
           <% end %>
-
-          <p><%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %></p>
         </div>
       </div>
 
+      <div class="row justify-content-end">
+        <div class="mr-4 mb-2">
+          <button type="button" class="btn btn-primary">
+            <%= link_to "Back to Projects", projects_path %>
+          </button>
+        </div>
+      </div>
 
-  <%# --- LIST OF BIDS --- %>
+    </div>
+  </div>
+
+    <%# --- List of Bids --- %>
     <div class="container my-3 p-3 bg-white">
       <button type="button" class="list-group-item list-group-item-action active">
         <h4 class="text-center">Developer's Bids</h4>
@@ -76,9 +94,10 @@
               </div>
             </div>
           <% end %>
+          <%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %>
         </div>
       <% end %>
-      <%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %>
     </div>
+
   </div>
 </div>
