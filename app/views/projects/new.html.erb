@@ -12,16 +12,16 @@
         </p>
         <p>
             <%= form.label :title %> 
-            <%= form.text_field :title %>
+            <%= form.text_field :title, maxlength: 50, size: 25 %>
         </p>
         <p>
             <%= form.label :overview %> 
-            <%= form.text_field :overview %>
+            <%= form.text_area :overview, size: "30x5", maxlength: 500 %>
         </p>
 
         <p>
             <%= form.label :description %> 
-            <%= form.text_field :description %>
+            <%= form.text_area :description, size: "50x5", maxlength: 1000 %>
         </p>
 
         <p>
