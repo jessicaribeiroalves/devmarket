@@ -84,7 +84,11 @@
             <td><%= bid.project_id %></td>
             <td><%= bid.project.title %></td>
             <td><%= bid.project.overview %></td>
-            <%# <td><%= bid.project.price %>
+            <td><% if bid.project.rating != nil %>
+              <%= button_to bid.project.rating.rate, project_path(bid.project_id), :class => "btn btn-secondary btn-lg", :method => :get %>
+              <% else %>
+              No rating yet
+            <% end %></td>
           </tr>
         <% end %>  
       <% end %>      
