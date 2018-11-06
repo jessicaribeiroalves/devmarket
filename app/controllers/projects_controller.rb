@@ -1,12 +1,8 @@
 class ProjectsController < ApplicationController
   # Authenticate user before accessing website
-<<<<<<< HEAD
   before_action :authenticate_user!, :except => [:index]
   before_action :set_project, only: [:show, :cancel_project, :status_complete]
-=======
-  before_action :authenticate_user!
-  before_action :set_project, only: [:show, :status_complete]
->>>>>>> 705dd3bdaa58eb1df83742929206ffe6dd3c1b91
+  before_action :auth_user, only: [:new, :create, :cancel_bid, :cancel_project, :status_complete]
 
   def index
     @products = Product.all # for filtering options
@@ -78,6 +74,8 @@ class ProjectsController < ApplicationController
     if @project.open?
       @project.cancelled!
       redirect_to projects_dashboard_path, notice: "Project cancelled. Please contact the DevMarket team regarding your refund."
+    else
+      redirect_to projects_dashboard_path, notice: "Unable to cancel this project. Please contact the DevMarket team."
     end
   end
 
@@ -85,11 +83,26 @@ class ProjectsController < ApplicationController
   def status_complete
     if @project.ongoing?
       @project.completed!
+      redirect_to projects_dashboard_path, notice: "Project completed!"
+    else
+      redirect_to projects_dashboard_path, notice: "Unable to completed this project. Please contact the DevMarket."
     end
-    redirect_to projects_dashboard_path, notice: "Project completed!"
   end
 
   private
+
+  def auth_user
+    if AuthorizationService::complete_profile?(current_user)
+    else
+      if current_user.user_type == "dev"
+        redirect_to edit_user_registration_path, notice: "Please complete your profile before placing an offer"
+      elsif current_user.user_type == "client"
+        redirect_to edit_user_registration_path, notice: "Please complete your profile before posting a project"
+      else
+        redirect_to edit_user_registration_path, notice: "Please provide your name and phone number before continuing"
+      end
+    end
+  end
 
   def set_project
     @project = Project.find(params[:id])
