@@ -1,71 +1,70 @@
-
-<div class="container">
-  <div class="header text-center mb-3">
-    <h1>Recent Projects</h1>
-  </div>   
+<%# --- Page Showing all Projects --- %>
+<div>
+  <div class="container">
+    <div class="header text-center mb-3">
+      <h1>Recent Projects</h1>
+    </div>   
     <div class="header mb-3">
-    </div>
-    <div class="row justify-content-end">
-    <div class="mr-4 mb-2">
-      <button type="button" class="btn btn-primary">
-        <%= link_to "Back Home", root_path %>
-      </button>
-    </div>
+      <div class="row justify-content-end">
+        <div class="mr-4 mb-2">
+          <button type="button" class="btn btn-primary">
+            <%= link_to "Back Home", root_path %>
+          </button>
+        </div>
       <div>
         <button type="button" class="btn btn-primary">
           <%= link_to "Create Project", products_path %>
         </button>
       </div>
-  </div>
-      <div class="header mb-3">
-        <%# Filter Projects by Type %>
-          <div class="">
-            <%= form_with url: projects_path, method: :get, local: true do |form| %> 
-            <%= form.select :filter, @products.collect {|p| [p.option, p.id]} %>
-            <%= form.submit 'Filter Projects' %>
-        <% end %>
-          </div>
-      </div>
+    </div>
 
-  <div class="mb-3">
-    <%# List of All Projects %>
-  <div class="row">
-    <% @projects.each do |project| %>
-      <div class="card mb-2 p-2 col-sm-6 col-md-4">
-        <% if project.product_id == 1 %>
-          <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
-        <% elsif project.product_id == 2 %>
-          <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
-        <% else project.product_id == 3 %>
-          <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
-    <% end %>
-          <div class="card-body">
-            <label for="project_title"><strong>Project Title</strong></label>
-            <p class="card-title"><%= project.title %></p>  
-            <label for="project_overview"><strong>Project Overview</strong></label>
-            <p class="card-text"><%= project.overview %></p>
-            <label for="project_description"><strong>Project Description</strong></label>
-            <p class="card-text"><%= project.description %></p>
-            <label for="project_price"><strong>Project Price</strong></label>
+    <%# --- Filter Projects by Type  --- %>
+    <div class="">
+      <%= form_with url: projects_path, method: :get, local: true do |form| %> 
+        <%= form.select :filter, @products.collect {|p| [p.option, p.id]} %>
+        <%= form.submit 'Filter Projects' %>
+      <% end %>
+    </div>
+      
+    <%# --- List of all Projects  --- %>
+    <div class="mb-3">
+      <div class="row">
+        <% @projects.each do |project| %>
+          <div class="card mb-2 p-2 col-sm-6 col-md-4">
+            <% if project.product_id == 1 %>
+              <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
+            <% elsif project.product_id == 2 %>
+              <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
+            <% else project.product_id == 3 %>
+              <img class="card-img-top w-95 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
+            <% end %>
+              <div class="card-body">
+                <label for="project_title"><strong>Project Title</strong></label>
+                <p class="card-title"><%= project.title %></p>  
+                <label for="project_overview"><strong>Project Overview</strong></label>
+                <p class="card-text"><%= project.overview %></p>
+                <label for="project_description"><strong>Project Description</strong></label>
+                <p class="card-text"><%= project.description %></p>
+                <label for="project_price"><strong>Project Price</strong></label>
                 <p class="card-text"><%= project.price %></p>
                 <p class="card-text"><%= link_to "Tell Me More...", project_path(project) %></p>   
-              <div>
-                <%= link_to "BID", project_bids_path(project), method: :post %>
-                <button type="button" class="close btn btn-primary">
-                </button>
+                <div>
+                  <%# --- FOR Dev to Place their Bid --- %>
+                  <% if user_signed_in? %>
+                    <% if current_user.user_type == "dev" && @project.status == "open" %>
+                      <div class="row card-body">
+                        <button type="button" class="close btn btn-primary">
+                          <%= link_to "BID", project_bids_path(@project), method: :post %>
+                        </button>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-       </div>
-    <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
-
- 
-
-
-
-
-
-
-
-

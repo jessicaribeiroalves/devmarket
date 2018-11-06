@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
 
     @bid = Bid.new # for creating a new bid - devs
     @bids = @project.bids # bids for this project
+
     if @project.bids.find_by(:status => 1) != nil # check if there accepted bid
       @accepted_dev = @project.bids.find_by(:status => 1).user
     end
