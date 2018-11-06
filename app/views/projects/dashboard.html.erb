@@ -30,7 +30,7 @@
                     <%= "No bids yet" %>
                   <% else %>
                     <% project.bids.each do |bid| %>
-                      <button class="btn btn-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post %></button>
+                      <button class="btn btn-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post %>Bid <%= bid.id %></button>
                     <% end %>
                   <% end %>
                 </div>
@@ -51,6 +51,8 @@
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
       <th scope="col">Developer working on the project</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Check Status</th>
     </tr>
   </thead>
   <tbody>
@@ -59,6 +61,11 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
+        <td><%= project.deadline %></td>
+        <td><button class="btn btn-success">
+        <% if current_user.id == project.user_id && project.status == "ongoing" %>
+          <%= link_to "Project Complete?", status_complete_project_path(project), method: :post, data: { confirm: 'Project Complete'},class:"btn btn-warning" %>
+        <% end %></button>
       </tr>
     <% end %>
   </tbody>
@@ -72,6 +79,7 @@
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
       <th scope="col">Developer who worked on the project</th>
+      <th scope="col">Rating</th>
     </tr>
   </thead>
   <tbody>
@@ -80,7 +88,28 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
+        <%# <td> RATING LOGIC TO SHOW THE RATING FOR EACH PROJECT </td> %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+                <%# --- Completed Project-Show Rating--- %>
+                <%# if @project.rating != nil %>
+                  <%# <div class="card w-75"> %>
+                    <%# <div class="card-body"> %>
+                      <%# <span class="card-title">Ratings:</span> = @rated.rate %>
+                      <%# <p class="card-text"> %>
+                        <%#= @rated.testimony %>
+                      <%# </p> %>
+                      <%# TODO: link to dev profile %>
+                      <%# <a href="#" class="btn btn-primary">To 'Dev' Profile</a> %>
+                    <%# </div> %>
+                  <%# </div> %>
+                <%# end %>
+                  
+                <%# --- Completed Project-Not Yet Rated--- %>
+                  <%# if @project.rating == nil && current_user.id == @project.user_id %>
+                      <%#= render "ratings/form", project: @project, rating: @rating %>
+                  <%# end %>
+              <%# end  %>

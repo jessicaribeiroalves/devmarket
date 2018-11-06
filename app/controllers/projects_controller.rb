@@ -50,12 +50,27 @@ class ProjectsController < ApplicationController
     @completed = Project.where("user_id = #{current_user.id} AND status = 2")
   end
 
+  def cancel_bid # For Developers
+    Bid.find(params[:id]).destroy
+    redirect_to projects_dashboard_developer_path, notice: "Bid cancelled."
+  end
+
+  def cancel_project # For Clients
+    project = Project.find(params[:id])
+    if project.open?
+      project.cancelled!
+      redirect_to projects_dashboard_path, notice: "Project cancelled. Please contact the DevMarket team regarding your refund."
+    end
+  end
+
+  # Changing the project status to 'Completed' when client clicks on completed button
   def status_complete
     if @project.ongoing?
       @project.completed!
     end
-    redirect_to project_path(@project)
+    redirect_to projects_dashboard_path, notice: "Project completed!"
   end
+
 
   private
 
