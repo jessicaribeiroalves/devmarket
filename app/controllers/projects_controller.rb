@@ -3,12 +3,9 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
   before_action :set_project, only: [:show, :status_complete]
 
-  def index
-    @product_1 = Product.find_by(option: "Basic Website")
-    @product_2 = Product.find_by(option: "Ecommerce Website")
-    @product_3 = Product.find_by(option: "Blog Site")
+  def index    
     @products = Product.all # for filtering options
-    # ordered projects from oldest to newest, limit 20 results
+    # # ordered projects from oldest to newest, limit 20 results
     @projects = if params[:filter].present?
                   Project.where(:product_id => params[:filter]).order(updated_at: "asc").limit(20)
                 else
@@ -66,13 +63,14 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def status_complete # For Clients
-    project = Project.find(params[:id])
-    if project.ongoing?
-      project.completed!
-      redirect_to projects_dashboard_path
+  # Changing the project status to 'Completed' when client clicks on completed button
+  def status_complete
+    if @project.ongoing?
+      @project.completed!
     end
+    redirect_to projects_dashboard_path, notice: "Project completed!"
   end
+
 
   private
 

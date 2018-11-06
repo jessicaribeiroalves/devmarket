@@ -7,7 +7,12 @@
           <img class="card-img-top" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">
             <p class="card-text">Product Description: <%= @product_1.description %></p> 
             <p class="card-text">Product Price: <%= @product_1.price %></p>
-            <p class="card-text">Recommended Timeframe: <%= @product_1.duration %></p> days   
+            <p class="card-text">Recommended Timeframe: <%= @product_1.duration %></p> 
+              <div>
+                <button type="button" class="btn btn-primary">
+                  <%= link_to "Create Project", new_project_path %>
+                </button>
+              </div>
         </div>
     </div>
     <div class="col">
@@ -16,7 +21,12 @@
           <img class="card-img-top" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap">
             <p class="card-text">Product Description: <%= @product_2.description %></p> 
             <p class="card-text">Product Price: <%= @product_2.price %></p>
-            <p class="card-text">Recommended Timeframe: <%= @product_2.duration %></p> days   
+            <p class="card-text">Recommended Timeframe: <%= @product_2.duration %></p>
+              <div>
+                <button type="button" class="btn btn-primary">
+                  <%= link_to "Create Project", new_project_path %>
+                </button>
+              </div>   
         </div>    
     </div>
     <div class="col">
@@ -25,7 +35,12 @@
           <img class="card-img-top" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap">
             <p class="card-text">Product Description: <%= @product_3.description %></p> 
             <p class="card-text">Product Price: <%= @product_3.price %></p>
-            <p class="card-text">Recommended Timeframe: <%= @product_3.duration %></p> days   
+            <p class="card-text">Recommended Timeframe: <%= @product_3.duration %></p>
+              <div>
+                <button type="button" class="btn btn-primary">
+                  <%= link_to "Create Project", new_project_path %>
+                </button>
+              </div>    
         </div>  
     </div>
   </div>

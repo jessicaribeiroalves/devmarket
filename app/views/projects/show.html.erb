@@ -6,14 +6,18 @@
 
   <div class="row">
     <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
-      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <% if @project.product_id == 1 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
+        <% elsif @project.product_id == 2 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
+        <% else @project.product_id == 3 %>
+          <img class="card-img-top w-50 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
+    <% end %>    
       <div class="card-body">
         <label for="project_overview"><strong>Project Overview</strong></label>
         <p class="project_overview"><%= @project.overview %></p>
         <label for="project_description"><strong>Project Description</strong></label>
         <p class="Project Description"><%= @project.description %></p>
-        <label for="project_deadline"><strong>Project Deadline</strong></label>
-        <p class="Project Deadline"><%= @project.deadline %></p>
         <label for="project_price"><strong>Project Price</strong></label>
         <p class="Project Price"><%= @project.price %></p>
         <label for="project_status"><strong>Project Status</strong></label>
@@ -48,40 +52,9 @@
           <% end %>
         <% end %>
 
-          <%# --- !!! CONTROL PANEL CLIENTS to be moved to Dashboard !!!! --- %>
-            <%# FOR Client to manage their project %>
-              <%# --- Project Completed? --- %>
-              <%# if current_user.id == @project.user_id && @project.status == "ongoing" %>
-                <%#= link_to "Project Complete?", status_complete_project_path(@project), method: :post, data: { confirm: 'Project Complete?' }, class:"btn btn-warning" %>
-              <%# end %>
-
-              <%# --- Completed Project Options --- %>
-              <%# if @project.status == "completed" %>  
-                <%# <span class="btn btn-success">Completed!</span> %>
-
-                <%# --- Completed Project-Show Rating--- %>
-                <%# if @project.rating != nil %>
-                  <%# <div class="card w-75"> %>
-                    <%# <div class="card-body"> %>
-                      <%# <span class="card-title">Ratings:</span> = @rated.rate %>
-                      <%# <p class="card-text"> %>
-                        <%#= @rated.testimony %>
-                      <%# </p> %>
-                      <%# TODO: link to dev profile %>
-                      <%# <a href="#" class="btn btn-primary">To 'Dev' Profile</a> %>
-                    <%# </div> %>
-                  <%# </div> %>
-                <%# end %>
-                  
-                <%# --- Completed Project-Not Yet Rated--- %>
-                  <%# if @project.rating == nil && current_user.id == @project.user_id %>
-                      <%#= render "ratings/form", project: @project, rating: @rating %>
-                  <%# end %>
-              <%# end  %>
-
-     <p><%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %></p>
+        <p><%= link_to "Back to Projects", projects_path, class:"mt-2 btn btn-outline-secondary btn-sm" %></p>
+      </div>
     </div>
-</div>
 
 
 <%# --- LIST OF BIDS --- %>
