@@ -1,4 +1,7 @@
 class BidsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :auth_user, only: [:create]
+
   def create
     # To place a bid - user must a dev and not already have a bid
     if current_user.user_type == "dev" && current_user.bids.find_by(:project_id => params[:project_id]) == nil
@@ -14,7 +17,7 @@ class BidsController < ApplicationController
       redirect_to project_path(params[:project_id])
     end
   end
-  
+
   # Accepting a bid from dev on client's dashboard
   def accept_bid
     @accepted_bid = Bid.find(params[:bid_id])
@@ -39,5 +42,17 @@ class BidsController < ApplicationController
     flash[:notice] = "Bid accepted!"
     redirect_to projects_dashboard_path
   end
-  
+
+  private
+
+  def auth_user
+    if AuthorizationService::complete_profile?(current_user)
+    else
+      if current_user.user_type == "dev"
+        redirect_to edit_user_registration_path, notice: "Please complete your profile before placing an offer"
+      else
+        redirect_to edit_user_registration_path, notice: "Please provide your name and phone number before continuing"
+      end
+    end
+  end
 end
