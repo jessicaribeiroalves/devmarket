@@ -3,12 +3,9 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, :except => [@projects, :index, :show, :set_project]
   before_action :set_project, only: [:show, :status_complete]
 
-  def index
-    @product_1 = Product.find_by(option: "Basic Website")
-    @product_2 = Product.find_by(option: "Ecommerce Website")
-    @product_3 = Product.find_by(option: "Blog Site")
+  def index    
     @products = Product.all # for filtering options
-    # ordered projects from oldest to newest, limit 20 results
+    # # ordered projects from oldest to newest, limit 20 results
     @projects = if params[:filter].present?
                   Project.where(:product_id => params[:filter]).order(updated_at: "asc").limit(20)
                 else
