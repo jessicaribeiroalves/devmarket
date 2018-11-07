@@ -11,52 +11,58 @@
     </div>
   </div>
 
-  <%# --- Show Single Project Page --- %>
-  <div class="row">
-    <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
-      <% if @project.product_id == 1 %>
-        <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
-          <% elsif @project.product_id == 2 %>
-            <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
-          <% else @project.product_id == 3 %>
-            <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
-      <% end %>    
-    <div class="card-body">
-      <label for="project_overview"><strong>Project Overview</strong></label>
-      <p class="project_overview"><%= @project.overview %></p>
-      <label for="project_description"><strong>Project Description</strong></label>
-      <p class="Project Description"><%= @project.description %></p>
-      <label for="project_price"><strong>Project Price</strong></label>
-      <p class="Project Price">$ <%= (@project.price / 100) %></p>
-      <label for="project_status"><strong>Project Status</strong></label>
-      <p class="Project Status"><%= @project.status %></p>
-    </div>
+    <%# --- Show Single Project Page --- %>
+    <div class="row">
+      <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
+        <% if @project.product_id == 1 %>
+          <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page" alt="Card image cap">  
+            <% elsif @project.product_id == 2 %>
+              <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap"> 
+            <% else @project.product_id == 3 %>
+              <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
+        <% end %>    
+      <div class="card-body">
+        <label for="project_overview"><strong>Project Title</strong></label>
+        <p class="project_overview"><%= @project.title %></p>
+        <label for="project_overview"><strong>Type</strong></label>
+        <p class="project_overview"><%= @project.product.option %></p>    
+        <label for="project_overview"><strong>Overview</strong></label>
+        <p class="project_overview"><%= @project.overview %></p>
+        <label for="project_description"><strong>Description</strong></label>
+        <p class="Project Description"><%= @project.description %></p>
+        <label for="project_price"><strong>Price</strong></label>
+        <p class="Project Price"><%= (@project.price / 100) %></p>
+        <label for="project_status"><strong>Status</strong></label>
+        <p class="Project Status"><%= @project.status %></p>
+      </div>
+
 
   <%# --- Show If Completed Project --- %>
     <% if @project.status == "completed" %>  
       <span class="btn btn-success disabled">Completed!</span>
 
-      <%# --- Show If Project has Rating --- %>
-      <% if @project.rating %>
-        <div class="card">
-          <div class="card-body">
-            <span class="card-title">Rated</span>
-              <% @rated.rate.to_i.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - @rated.rate.to_i).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            <p class="card-text">
-              <%= @rated.testimony %>
-            </p>
-            <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
-          </div>
-      <% end  %>
-      <%# --- Completed Project-Not Yet Rated--- %>
-      <% if @project.rating == nil && current_user.id == @project.user_id %>
-        <%= render "ratings/form", project: @project, rating: @rating %>
-      <% end %>
+        <%# --- Show If Project has Rating --- %>
+        <% if @project.rating %>
+          <a name="rating"></a>
+          <div class="card">
+            <div class="card-body">
+              <span class="card-title">Rated</span>
+                <% @rated.rate.to_i.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - @rated.rate.to_i).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <p class="card-text">
+                <%= @rated.testimony %>
+              </p>
+              <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
+            </div>
+        <% end  %>
+        <%# --- Completed Project-Not Yet Rated--- %>
+        <% if @project.rating == nil && current_user.id == @project.user_id %>
+          <%= render "ratings/form", project: @project, rating: @rating %>
+        <% end %>
     <% end  %>
 
   <%# --- FOR Dev to Place their Bid --- %>
