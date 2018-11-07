@@ -15,6 +15,7 @@
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
+ 
 ///// COLORS /////
 $primary-color: #29378D; 
 $secondary-color: #4169E1;
@@ -40,11 +41,6 @@ $secondary-bg-color:#A6ABB3;
 $header-font: 'Roboto', sans-serif;
 $body-font: 'Open Sans', sans-serif;
 
-#dev_header_1 {
-    color: #4169E1;
-      
-}
-
 
  //// Links /////
  a, a:visited {
@@ -53,40 +49,73 @@ $body-font: 'Open Sans', sans-serif;
     color: $primary-color;
 }
 
+.hero_text {
+    font-size: 100px;
+    font-family: 'Arial Bold';
+    float: right;
+    color: white;
+    bottom: 10px;
+
+}
 
  //// Universal Styling /////
 body {
     scroll-behavior: smooth;
     font-family: $body-font;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-.vh-100 {
-    min-height: calc(100vh - 300px);
 }
 
 //// Carousel Images /////
-.carousel img {
-    height: 500px;
-}
 
-//// Footer /////
-#footer {
+.jumbotron {
+    background-image: url("https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/Fotolia_204408064_XXL+(1).jpg");
+    background-size: cover;
+    height: 700px;
+    background-repeat: no-repeat;
     position: relative;
-    margin-top: -150px; /* negative value of footer height */
-    height: 150px;
-    clear: both;
-    padding-top: 20px;
-} 
-
-//// Dashboards /////
-
-#dashtitle {
-    color: #29378D;
 }
 
-#subtitle {
-    color: #4169E1;
-    margin-left: 1%;
+.pic1 {
+    height: 100px;
+    width: 75px;
+}
+
+.pic2 {
+    height: 100px;
+    width: 75px;
+}
+
+.pic3 {
+    height: 100px;
+    width: 75px;
+}
+
+.pic4 {
+    height: 100px; 
+    width: 75px;
+}
+
+#thumb {
+ width: 30px;
+
+}
+
+.headertext {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+}
+
+.caption {
+    font-family: 'Arial';
+    font-size: 20px;
+
+}
+
+.background {
+  background-color: grey;
+}
+
+.header_btn {
+ float: left;
+
+
 }
