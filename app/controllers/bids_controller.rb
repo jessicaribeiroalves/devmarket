@@ -1,14 +1,11 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
-  before_action :auth_user, only: [:create]
+  before_action :auth_user, only: [:create, :accept_bid]
 
   def create
     # To place a bid - user must a dev and not already have a bid
     if current_user.user_type == "dev" && current_user.bids.find_by(:project_id => params[:project_id]) == nil
-      @bid = Bid.new
-      @bid.project_id = params[:project_id]
-      @bid.user_id = current_user.id
-      @bid.save
+      Bid.create(project_id: params[:project_id], user_id: current_user.id)
 
       flash[:notice] = "Bid was successfully created"
       redirect_to project_path(params[:project_id])
@@ -50,6 +47,8 @@ class BidsController < ApplicationController
     else
       if current_user.user_type == "dev"
         redirect_to edit_user_registration_path, notice: "Please complete your profile before placing an offer"
+      elsif current_user.user_type == "client"
+        redirect_to edit_user_registration_path, notice: "Please complete your profile proceeding with this project"
       else
         redirect_to edit_user_registration_path, notice: "Please provide your name and phone number before continuing"
       end

@@ -1,15 +1,19 @@
-<h1>Meet the Developers</h1>
+<div class="container">
+  <div class="header">
+    <h1 class="text-center">Meet the Developers</h1>
+  </div>
 
-<div class="row d.-flex">
+  <div class="row">
     <% @devs.each do |dev| %>
-        <div class="card mb-3 rounded p-5 mr-3 col-sm-3 text-center">
-            <%= link_to profile_path(dev) do %>
-                <%= image_tag dev.avatar_url, alt: "User Avatar Picture" unless dev.avatar_url.nil? %>
-                <div class="card-body">
-                    <h5 class="card-title"> <td><%= dev.name %></h5>
-                    <p class="card-text"><%= dev.city %></p>
-                </div>
-            <% end %>            
-        </div>
+      <div class="card col-sm-4 col-md-3 p-4 text-center">
+        <%= link_to profile_path(dev) do %>
+          <%= image_tag dev.avatar_url, alt: "User Avatar Picture", class:"card-img img-responsive" unless dev.avatar_url.nil? %>
+          <div class="card-body">
+            <h5 class="card-title"> <td><%= dev.name %></h5>
+            <p class="card-text"><%= dev.city %></p>
+          </div>
+        <% end %>      
+      </div>
   <% end %>
+  </div>
 </div>
