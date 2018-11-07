@@ -25,9 +25,34 @@ class ProjectsController < ApplicationController
 
   def create
     if current_user.user_type == "client"
-      @project = Project.new(project_params)
-      @project.user_id = current_user.id
-      @project.save
+      project = Project.new(project_params)
+
+      product_id = params[:project][:product_id]
+      amount = Product.find(product_id).price
+
+      project.user_id = current_user.id                
+      project.price = amount
+      
+      # Stripe customer and charge
+      if current_user.stripe_id.nil?
+        customer = Stripe::Customer.create(
+          :email => current_user.email,
+        )
+        current_user.stripe_id = customer.id
+        current_user.save
+      end
+
+      customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      customer.source = params[:stripeToken]
+      customer.save
+
+      Stripe::Charge.create(
+        :amount => amount,
+        :currency => "aud",
+        :customer => current_user.stripe_id,
+      )
+
+      project.save
     else
       redirect_to root_path
     end
@@ -109,6 +134,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:product_id, :price, :title, :overview, :description, :deadline, :status)
+    params.require(:project).permit(:product_id, :title, :overview, :description)
   end
 end
