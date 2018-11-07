@@ -1,9 +1,16 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @product_1 = Product.find(1)
-    @product_2 = Product.find(2)
-    @product_3 = Product.find(3)
-  end
 
+    @images = [{
+      url: "https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page",
+      alt: "product image for landing page site",
+    }, {
+      url: "https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce",
+      alt: "product image for ecommerce site",
+    }, {
+      url: "https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog",
+      alt: "product image for blog site",
+    }]
+  end
 end
