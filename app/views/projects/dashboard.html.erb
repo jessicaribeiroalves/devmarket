@@ -94,10 +94,11 @@
               <td><%= link_to project.title, project_path(project.id) %></td>
               <td><%= project.bids[0].user.name %></td>
               <td><% if project.rating != nil %>
-                      <%= button_to project.rating.rate, project_path(project, anchor: 'rating'), :class => "btn btn-secondary btn-lg", :method => :get %>
+                      <%= button_to project.rating.rate, project_path(project.id, anchor: "rated"), method: :get, :class => "btn btn-secondary btn-lg" %>
                     <% else %>
-                      <%= link_to "Rate this project", project_path(project, anchor: 'rating'), method: :get %>
-                    <% end %></td>
+                      <%= link_to "Rate this project", project_path(project.id, anchor: "not-rated") %>
+                    <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -43,9 +43,9 @@
 
         <%# --- Show If Project has Rating --- %>
         <% if @project.rating %>
-          <a name="rating"></a>
           <div class="card">
             <div class="card-body">
+              <a name="rated"></a>
               <span class="card-title">Rated</span>
                 <% @rated.rate.to_i.times do %>
                   <i class="fas fa-star"></i>
