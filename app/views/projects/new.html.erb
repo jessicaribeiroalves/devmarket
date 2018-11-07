@@ -7,16 +7,15 @@
             <%= form.select :product_id, @products.collect {|p| [p.option, p.id]} %>
         </p>
         <p>
-            <%= form.label :price %> 
-            <%= form.text_field :price, type: 'number' %>
+            <%#= form.label :price %>
         </p>
         <p>
             <%= form.label :title %> 
-            <%= form.text_field :title, maxlength: 50, size: 25 %>
+            <%= form.text_field :title, maxlength: 50, size: 30 %>
         </p>
         <p>
             <%= form.label :overview %> 
-            <%= form.text_area :overview, size: "30x5", maxlength: 500 %>
+            <%= form.text_area :overview, size: "50x5", maxlength: 500 %>
         </p>
 
         <p>
@@ -26,8 +25,6 @@
 
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
-          data-description="A month's subscription"
-          data-amount="500"
           data-locale="auto"></script>
     
     <% end %>
