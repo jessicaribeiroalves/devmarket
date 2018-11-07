@@ -1,7 +1,7 @@
-<h1 class="container display-4 text-center" >Client's Dashboard</h1><br>
+<h1 class="container display-4 text-center" id="dashtitle">Welcome, <%= current_user.name %> !</h1><br>
 
 <%# Projects created by the user(client) and open to bids, not in progress yet%>
-<h2>Open</h2>
+<h2 id="subtitle">Open</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,7 +20,7 @@
             <div class="card">
               <div class="card-header" id="heading<%= index.to_s %>">
                 <h5 class="mb-0">
-                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">Bids</button>
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">Check</button>
                 </h5>
               </div>
 
@@ -44,13 +44,13 @@
 </table>
 
 <%# Projects created by the user and in progress - the developer already has been chosen by the client %>
-<h2>In Progress</h2>
+<h2 id="subtitle">In Progress</h2>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
-      <th scope="col">Developer working on the project</th>
+      <th scope="col">Developer</th>
       <th scope="col">Deadline</th>
       <th scope="col">Check Status</th>
     </tr>
@@ -61,24 +61,24 @@
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
         <td>Developer's name</td>
-        <td><%= project.deadline %></td>
-        <td><button class="btn btn-success">
+        <td><%= project.deadline.strftime("%d %B %Y") %></td>
+        <td>
         <% if current_user.id == project.user_id && project.status == "ongoing" %>
-          <%= link_to "Project Complete?", status_complete_project_path(project), method: :post, data: { confirm: 'Project Complete'},class:"btn btn-warning" %>
-        <% end %></button>
+          <%= link_to "Completed?", status_complete_project_path(project), method: :post, data: { confirm: 'Project completed?'},class:"btn btn-success" %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%# Completed and closed projects that were created by the user (client) %>
-<h2>Completed</h2>
+<h2 id="subtitle">Completed</h2>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Project ID</th>
       <th scope="col">Title</th>
-      <th scope="col">Developer who worked on the project</th>
+      <th scope="col">Developer</th>
       <th scope="col">Rating</th>
     </tr>
   </thead>
@@ -87,7 +87,7 @@
       <tr>
         <th scope="row"><%= project.id %></th>
         <td><%= project.title %></td>
-        <td>Developer's name</td>
+        <td><%= project.bids[0].user.name %></td>
         <td><% if project.rating != nil %>
           <%= button_to project.rating.rate, project_path(project), :class => "btn btn-secondary btn-lg", :method => :get %>
           <% else %>

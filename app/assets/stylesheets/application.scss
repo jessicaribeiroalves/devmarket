@@ -43,7 +43,7 @@ $body-font: 'Open Sans', sans-serif;
 #dev_header_1 {
     color: #4169E1;
       
-  }
+}
 
 
  //// Links /////
@@ -78,4 +78,15 @@ body {
     height: 150px;
     clear: both;
     padding-top: 20px;
-  } 
+} 
+
+//// Dashboards /////
+
+#dashtitle {
+    color: #29378D;
+}
+
+#subtitle {
+    color: #4169E1;
+    margin-left: 1%;
+}

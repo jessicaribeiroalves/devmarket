@@ -4,19 +4,19 @@
 ##### Static Product Line #####
 Product.create(
   option: "Basic Website",
-  price: 500,
+  price: 50000,
   duration: 21,
   description: "Build a beautiful, mobile friendly website to supercharge your business",
 )
 Product.create(
   option: "Ecommerce Website",
-  price: 1000,
+  price: 100000,
   duration: 28,
   description: "Build an online, 24/7 online shop to sell your services to new clients",
 )
 Product.create(
   option: "Blog Site",
-  price: 200,
+  price: 20000,
   duration: 10,
   description: "Build a blog to attract customers and build your expertise online",
 )
