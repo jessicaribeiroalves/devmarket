@@ -1,31 +1,35 @@
-<h1 class="container display-4 text-center">Create a new project:</h1><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6 p-4 bg-white">
+            <h1 class="text-center p-2" id="dashtitle">Create a new project:</h1>
+            <div class="container text-center">
+                <%= form_with model: @project, local: true do |f| %>
 
-<div class="container text-center">
-    <%= form_with model: @project, local: true do |form| %>
-        <p>
-            <%= form.label :product_id %> 
-            <%= form.select :product_id, @products.collect {|p| [p.option, p.id]} %>
-        </p>
-        <p>
-            <%#= form.label :price %>
-        </p>
-        <p>
-            <%= form.label :title %> 
-            <%= form.text_field :title, maxlength: 50, size: 30 %>
-        </p>
-        <p>
-            <%= form.label :overview %> 
-            <%= form.text_area :overview, size: "50x5", maxlength: 500 %>
-        </p>
+                    <div class="form-group p-1">
+                        <%= f.label :product_id %> 
+                        <%= f.select :product_id, @products.collect {|p| [p.option, p.id]} %>
+                    </div>
 
-        <p>
-            <%= form.label :description %> 
-            <%= form.text_area :description, size: "50x5", maxlength: 1000 %>
-        </p>
+                    <div class="form-group p-1">
+                        <%= f.label :title %>
+                        <%= f.text_field :title, maxlength: 50, autofocus: true, autocomplete: "title", class:"form-control" %>
+                       
+                    </div>
+                    <div class="form-group p-1">
+                        <%= f.label :overview %> 
+                        <%= f.text_area :overview, maxlength: 500, size: "30x5", autofocus: true, class:"form-control"%>
+                    </div>
+                    <div class="form-group p-1">
+                        <%= f.label :description %> 
+                        <%= f.text_area :description, maxlength: 1000, size: "50x5", autofocus: true, class: "form-control" %>
+                    </div>
 
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
-          data-locale="auto"></script>
-    
-    <% end %>
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+                    data-locale="auto"></script>
+                
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
