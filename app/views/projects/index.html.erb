@@ -21,7 +21,7 @@
     <%# --- Filter Projects by Type  --- %>
     <div class="">
       <%= form_with url: projects_path, method: :get, local: true do |form| %> 
-        <%= form.select :filter, @products.collect {|p| [p.option, p.id]} %>
+        <%= form.select :filter, @products.collect {|p| [p.option, p.id]}, :prompt => 'All Projects' %>
         <%= form.submit 'Filter Projects' %>
       <% end %>
     </div>
