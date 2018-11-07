@@ -41,12 +41,8 @@
               <div class="card-body">
                 <label for="project_title"><strong>Project Title</strong></label>
                 <p class="card-title"><%= project.title %></p>  
-                <label for="project_overview"><strong>Project Overview</strong></label>
+                <label for="project_overview"><strong>Overview</strong></label>
                 <p class="card-text"><%= project.overview %></p>
-                <label for="project_description"><strong>Project Description</strong></label>
-                <p class="card-text"><%= project.description %></p>
-                <label for="project_price"><strong>Project Price</strong></label>
-                <p class="card-text"><%= project.price %></p>
                 <p class="card-text"><%= link_to "Tell Me More...", project_path(project) %></p>   
                 <div>
                   <%# --- FOR Dev to Place their Bid --- %>

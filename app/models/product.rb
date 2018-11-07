@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   validates :price,
             presence: true,
             numericality: true,
-            length: {maximum: 4},
+            length: {maximum: 10},
             on: :create,
             allow_nil: false
 

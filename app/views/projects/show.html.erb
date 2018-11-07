@@ -23,13 +23,17 @@
               <img class="card-img-top w-75 img-responsive" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap"> 
         <% end %>    
       <div class="card-body">
-        <label for="project_overview"><strong>Project Overview</strong></label>
+        <label for="project_overview"><strong>Project Title</strong></label>
+        <p class="project_overview"><%= @project.title %></p>
+        <label for="project_overview"><strong>Type</strong></label>
+        <p class="project_overview"><%= @project.product.option %></p>    
+        <label for="project_overview"><strong>Overview</strong></label>
         <p class="project_overview"><%= @project.overview %></p>
-        <label for="project_description"><strong>Project Description</strong></label>
+        <label for="project_description"><strong>Description</strong></label>
         <p class="Project Description"><%= @project.description %></p>
-        <label for="project_price"><strong>Project Price</strong></label>
+        <label for="project_price"><strong>Price</strong></label>
         <p class="Project Price"><%= @project.price %></p>
-        <label for="project_status"><strong>Project Status</strong></label>
+        <label for="project_status"><strong>Status</strong></label>
         <p class="Project Status"><%= @project.status %></p>
       </div>
 
@@ -39,6 +43,7 @@
 
         <%# --- Show If Project has Rating --- %>
         <% if @project.rating %>
+          <a name="rating"></a>
           <div class="card">
             <div class="card-body">
               <span class="card-title">Rated</span>
