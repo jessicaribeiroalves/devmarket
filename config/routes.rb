@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "", path_names: {sign_in: "login", sign_out: "logout", sign_up: "register"}
 
   get "products", to: "products#index"
-  
+
   resources :profiles, only: [:index, :show]
   resources :images, only: [:create, :destroy]
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "projects/dashboard_developer", to: "projects#dashboard_developer"
 
   resources :projects do
-    resources :bids
+    resources :bids, only: [:create, :accept_bid]
     resources :ratings, only: [:create]
     member do
       post "cancel_bid", to: "projects#cancel_bid"

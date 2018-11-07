@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   # Characters limit for project fields
   validates :title,
             presence: true,
-            length: {maximum: 50},
+            length: {maximum: 200},
             on: :create,
             allow_nil: false
 
