@@ -1,4 +1,5 @@
-<%# Dev User info and Stats (overall rating) %>
+<%-# -Dev User info and Stats (overall rating) %>
+
 <div class="container bg-white">
   <div class="row justify-content-center p-3 py-3">
     <div class="col-sm-12">
@@ -60,14 +61,14 @@
     </div>
   </div>
 
-  <%# List of Dev’s reviews %>
+  <%-# -List of Dev’s reviews %>
+  
   <div class="container my-3 py-3 bg-white">
     <div class="row justify-content-center p-3">
       <div class="col-sm-12">
         <h2 class="text-center">Reviews</h2>
       </div>
     </div>
-    <%# <div class="row justify-content-center p-3"> %>
     <div class="card-deck">
       <% if @ratings.empty? %>
         <div class="card">
@@ -92,7 +93,6 @@
       <% end %>
     </div>
 
-    <%# </div> %>
     <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
   </div>
 <% end %>

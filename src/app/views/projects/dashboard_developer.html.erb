@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-12 p-4 bg-white">
       <h1 class="display-4 text-center" id="dashtitle"> Dev's Dashboard </h1>
 
-      <%# Ongoing projects that current_user(dev) has accepted bids: Bid status = 1 AND Project status = 1 %>
+<%-# Ongoing projects that current_user(dev) has accepted bids: Bid status = 1 AND Project status = 1 %>
       <div class> 
         <div id = "dev_header_1">
           <h2> In Progress Projects </h2>
@@ -33,11 +33,10 @@
         </tbody>
       </table>
 
-      <%# Open projects that current_user(dev) has pending bids: Bid status = 0 and Project status = 0 %>
+<%-# Open projects that current_user(dev) has pending bids: Bid status = 0 and Project status = 0 %>
       <div class="mt-4"> 
           <h2> Active Bids </h2>
       </div>
-
       <table class="table table-striped">
         <thead class="thead-light">
           <tr>
@@ -61,7 +60,7 @@
         </tbody>
       </table>
 
-      <%# Completed projects that current_user(dev) has accepted bids: Bid status = 1 and Project status = 2 %>
+<%-# Completed projects that current_user(dev) has accepted bids: Bid status = 1 and Project status = 2 %>
       <div class="mt-4"> 
           <h2> Completed Projects </h2>
       </div>

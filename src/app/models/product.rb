@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   has_many :projects
 
-  # Validation
+# Validation for form input fields
   validates :option,
             presence: true,
             length: {maximum: 100},

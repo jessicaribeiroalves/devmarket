@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
+  # Product images 
+
     @images = [{
       url: "https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_3_landing_page",
       alt: "product image for landing page site",

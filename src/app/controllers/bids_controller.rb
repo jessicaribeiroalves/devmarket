@@ -3,7 +3,7 @@ class BidsController < ApplicationController
   before_action :auth_user, only: [:create, :accept_bid]
 
   def create
-    # To place a bid - user must a dev and not already have a bid
+  # To place a bid - user must be a dev and not already have a bid
     if current_user.user_type == "dev" && current_user.bids.find_by(:project_id => params[:project_id]) == nil
       Bid.create(project_id: params[:project_id], user_id: current_user.id)
 
@@ -21,20 +21,20 @@ class BidsController < ApplicationController
     @accepted_bid.status = 1
     @accepted_bid.save
 
-    # Changing the project status to 'In Progress' and setting the project deadline
+  # Changing the project status to 'In Progress' and setting the project deadline
     @project = Project.find(params[:project_id])
     @project.status = 1
     @project.deadline = Date.today + Product.find(@project.product_id).duration
     @project.save
 
-    # Rejecting all other project bids
+  # Rejecting all other project bids once 1 bid has been accepted
     @rejected_bids = Bid.where(:project_id => @project.id, :status => 0)
     @rejected_bids.each do |bid|
       bid.status = 2
       bid.save
     end
 
-    # what happens on dev's dashboard when client accepts a bid ?
+  # Flashnotice when client accepts a dev's bid
 
     flash[:notice] = "Bid accepted!"
     redirect_to projects_dashboard_path

@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
-  # Authenticate user before accessing website
+# Authenticate user before accessing website
   before_action :authenticate_user!, :except => [:index]
   before_action :set_project, only: [:show, :cancel_project, :status_complete]
   before_action :auth_user, only: [:create, :cancel_bid, :cancel_project, :status_complete]
 
   def index
     @products = Product.all # for filtering options
-    # # ordered projects from oldest to newest, limit 20 results
+
+    # ordered projects from oldest to newest, limit 20 results
     @projects = if params[:filter].present?
                   Project.where(:product_id => params[:filter]).order(updated_at: "asc").limit(24)
                 else

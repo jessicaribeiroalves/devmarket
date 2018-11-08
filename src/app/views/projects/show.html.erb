@@ -11,7 +11,7 @@
     </div>
   </div>
 
-    <%# --- Show Single Project Page --- %>
+    <%-# -Show Single Project Page %>
     <div class="row">
       <div class="card mb-3 rounded p-5 mr-3 col-sm-12">
         <% if @project.product_id == 1 %>
@@ -37,11 +37,11 @@
       </div>
 
 
-  <%# --- Show If Completed Project --- %>
+  <%-# -Show If Completed Project %>
     <% if @project.status == "completed" %>  
       <span class="btn btn-success disabled">Completed!</span>
 
-        <%# --- Show If Project has Rating --- %>
+  <%-# -Show If Project has Rating %>
         <% if @project.rating %>
           <div class="card">
             <div class="card-body">
@@ -65,7 +65,7 @@
         <% end %>
     <% end  %>
 
-  <%# --- FOR Dev to Place their Bid --- %>
+  <%-# -For Dev to Place their Bid %>
     <% if user_signed_in? %>
       <% if current_user.user_type == "dev" && @project.status == "open" %>
         <div class="row card-body">
@@ -85,10 +85,10 @@
     </div>
   </div>
 
-    <%# --- List of Bids --- %>
+    <%-# -List of Bids %>
     <div class="container my-3 p-3 bg-white">
       <button type="button" class="list-group-item list-group-item-action active">
-        <h4 class="text-center">Developer's Bids</h4>
+        <h4 class="text-center">Developer Bids</h4>
       </button>
       <% if @bids.empty? %>
         <button type="button" class="list-group-item list-group-item-action">

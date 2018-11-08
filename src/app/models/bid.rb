@@ -5,6 +5,8 @@ class Bid < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
+# Validation before bid can be placed
+
   validates :status,
             presence: true,
             on: :create,

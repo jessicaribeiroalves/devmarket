@@ -49,6 +49,8 @@ $body-font: 'Open Sans', sans-serif;
     color: $primary-color;
 }
 
+ //// Homepage /////
+
 .hero_text {
     font-size: 100px;
     font-family: 'Arial Bold';
@@ -58,14 +60,6 @@ $body-font: 'Open Sans', sans-serif;
 
 }
 
- //// Universal Styling /////
-body {
-    scroll-behavior: smooth;
-    font-family: $body-font;
-}
-
-//// Carousel Images /////
-
 .jumbotron {
     background-image: url("https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/Fotolia_204408064_XXL+(1).jpg");
     background-size: cover;
@@ -74,22 +68,22 @@ body {
     position: relative;
 }
 
-.pic1 {
+.icon1 {
     height: 100px;
     width: 75px;
 }
 
-.pic2 {
+.icon2 {
     height: 100px;
     width: 75px;
 }
 
-.pic3 {
+.icon3 {
     height: 100px;
     width: 75px;
 }
 
-.pic4 {
+.icon4 {
     height: 100px; 
     width: 75px;
 }
@@ -120,9 +114,13 @@ body {
 .header_btn {
  float: left;
 
-
 }
 
+ //// Universal Styling /////
+ body {
+    scroll-behavior: smooth;
+    font-family: $body-font;
+}
 //// Dashboards ///// 
 
 #dashtitle {

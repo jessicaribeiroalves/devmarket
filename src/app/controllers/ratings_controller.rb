@@ -1,6 +1,8 @@
 class RatingsController < ApplicationController
   before_action :auth_user, only: [:create]
 
+  # Ratings for each project which will be shown on developer's profile and profile page
+
   def create
     @rating = Rating.new(params.require(:rating).permit(:rate, :testimony, :project_id))
     @rating.project_id = params[:project_id]
@@ -20,6 +22,8 @@ class RatingsController < ApplicationController
   end
 
   private
+
+  # Further profile information needed before rating can be given by client
 
   def auth_user
     if AuthorizationService::complete_profile?(current_user)

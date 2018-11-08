@@ -1,6 +1,8 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!
 
+# Dev can upload upto 6 images to a profile page
+
   def create
     if params["image"].present?
       if current_user.images.count < 6

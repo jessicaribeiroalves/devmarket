@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :bids, dependent: :destroy
 
+# Validation for user types
+
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, uniqueness: true
   validates_length_of :password, in: 6..30, allow_blank: true
   validates :user_type, inclusion: {in: %w(client dev), message: "%{value} is required."}
