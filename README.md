@@ -83,8 +83,8 @@ These competitors are similar in some ways to our marketplace but none of they h
 
 *APP SCREENSHOTS*
 
-![image](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_homepage.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_homepage_2.png)
+![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/devmarket/docs/devmarketimages/app_images/website_homepage.png)
+![alt text](/docs/devmarketimages/app_images/website_homepage.png)
 ![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_project_index.png)
 ![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devdashboard.png)
 ![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devprofiles.png)
