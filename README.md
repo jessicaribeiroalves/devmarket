@@ -1,6 +1,6 @@
 # RAILS PROJECT APP - DevMarket
 
-1. Link to [published app on Heroku](add link)
+1. Link to [published app on Heroku](https://dev-market-aus.herokuapp.com/)
 2. Link to [Github Repo](https://github.com/jessicaribeiroalves/devmarket). The 2 remaining team members forked this repo and merged code into.
    
 ##1. What is the need (i.e. challenge) that you will be addressing in your project?
