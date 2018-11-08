@@ -6,19 +6,12 @@
         <h2 class="card-text"><%= product.option %></h2>
           <div class="card-body">
             <img class="card-img-top" src="<%= @images[index][:url] %>" alt="<%= @images[index][:alt] %>" >
-              <p class="card-text">Product Description: <%= product.description %></p> 
-              <p class="card-text">Product Price: $ <%= product.price / 100 %></p>
-              <p class="card-text">Recommended Timeframe: <%= product.duration %> days</p> 
+            <p class="card-text">Product Description: <%= product.description %></p> 
+            <p class="card-text">Product Price: $ <%= product.price / 100 %></p>
+            <p class="card-text">Recommended Timeframe: <%= product.duration %> days</p> 
           </div>
       </div>
     <% end %>
-  </div>
-  <div class="row my-3">
-    <div class="col text-center">
-      <button type="button" class="btn btn-primary btn-lg  px-5">
-        <%= link_to "Create Project", new_project_path %>
-      </button>
-    </div>
   </div>
 </div>
 <div class ="row justify-content-center">
@@ -27,9 +20,3 @@
     <%= link_to "Create Project", new_project_path %>
   </button>
 </div>
-</div>
-
-
-
-
-
