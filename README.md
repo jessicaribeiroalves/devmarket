@@ -83,13 +83,12 @@ These competitors are similar in some ways to our marketplace but none of they h
 
 *APP SCREENSHOTS*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/devmarket/docs/devmarketimages/app_images/website_homepage.png)
 ![alt text](/docs/devmarketimages/app_images/website_homepage.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_project_index.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devdashboard.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devprofiles.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_project_1.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_edit_profile.png)
+![alt text](/docs/devmarketimages/app_images/website_project_index.png)
+![alt text](/docs/devmarketimages/app_images/website_devdashboard.png)
+![alt text](/docs/devmarketimages/app_images/website_devprofiles.png)
+![alt text](/docs/devmarketimages/app_images//website_project_1.png)
+![alt text](/docs/devmarketimages/app_images/website_edit_profile.png)
 
 
 **Describe the network infrastructure the App may be based on.**
@@ -211,9 +210,7 @@ Between the six tables our models utilises several types of relationships: one t
 
 **Provide your database schema design.**
 
-![alt text](http://url/to/img.png)
-
-
+![alt text](/docs/devmarketimages/ERD.png)
 
 **Provide User stories for your App.**
 We got our user story framework from atlassian (See https://www.atlassian.com/agile/project-management/user-stories)
