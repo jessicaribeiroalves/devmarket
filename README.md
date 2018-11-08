@@ -81,6 +81,19 @@ These competitors are similar in some ways to our marketplace but none of they h
 8. Ability for developers to bid on open projects and for clients to accept/decline these bids. Developers also have the ability to cancel a placed bid as long as it hasn't been accepted by a client.
 9. We have provided placeholders for 'About us' and 'Terms of Service'
 
+
+*Instructions on how to setup, configure and use our App*
+
+1. Git clone to local machine from jessicaribeiroalves/devmarket repo on Github
+2. CD into devmarket (folder)
+3. Do a bundle install on Terminal
+4. Run rails db:create on Terminal (ensure Postgres is running)
+5. Run rails db:migrate on Terminal
+6. Run rails db:seed on Terninal 
+7. Run server (rails s) 
+8. Localhost:3000 should bring up the application
+
+
 *APP SCREENSHOTS*
 
 ![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/jes/docs/devmarketimages/app_images/website_homepage.png)
