@@ -338,10 +338,6 @@ The source control platform we used was Git and Github.
 ***Provide an overview and description of your Testing process.***
 We went through the site 1-by-1 to find bugs in our code and then we went through the site together as a team from beginning to end to identify errors.
 
-**Provide checklist or link to test
-Clicking inputs
-Form inputs**
-
 Here is a  checklist of manual integrations tests we have identified.
 ***Users from the public***
 1. Can see Home page, Product offerings, Project Index, Developer Profiles
@@ -355,6 +351,7 @@ Here is a  checklist of manual integrations tests we have identified.
 3. Can view their developer dashboard
 4. Can cancelled a pending bid
 5. Can edit their profile
+    1. Check invalid data is not being saved and user redirected (model validations)
 6. Can upload an avatar to their profile
 7. Can upload and remove images to their profile
 
@@ -362,12 +359,15 @@ Here is a  checklist of manual integrations tests we have identified.
 ***Clients logged in***
 1. Can see Project Show page
 2. Can post a project
+   1. Check invalid data is not being saved and user redirected (model validations)
 3. Can view their client dashboard
 4. Can cancel an open project
 5. Can accept ONE bid on THEIR 'open' projects
 6. Can complete THEIR 'ongoing' projects
 7. Can rate the project/dev only once the project is complete
+    1. Check invalid data is not being saved and user redirected (model validations)
 8. Can not add incomplete information to create project (and ensure Stripe doesn’t charge for this)
+    1. Check invalid data is not being saved and user redirected (model validations)
 
 **Discuss and analyse requirements related to information system security.**
 *Common threats to web applications*
