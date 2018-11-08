@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-center mb-4">Choose Your Project</h3>
+  <h3 class="text-center mb-4 prodheading">Choose Project</h3>
   <div class="row">
     <div class="col">
       <h2 class="card-text">Basic Website</h2>
@@ -8,11 +8,6 @@
             <p class="card-text">Product Description: <%= @product_1.description %></p> 
             <p class="card-text">Product Price: <%= @product_1.price %></p>
             <p class="card-text">Recommended Timeframe: <%= @product_1.duration %></p> 
-              <div>
-                <button type="button" class="btn btn-primary">
-                  <%= link_to "Create Project", new_project_path %>
-                </button>
-              </div>
         </div>
     </div>
     <div class="col">
@@ -21,12 +16,7 @@
           <img class="card-img-top" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_1_ecommerce" alt="Card image cap">
             <p class="card-text">Product Description: <%= @product_2.description %></p> 
             <p class="card-text">Product Price: <%= @product_2.price %></p>
-            <p class="card-text">Recommended Timeframe: <%= @product_2.duration %></p>
-              <div>
-                <button type="button" class="btn btn-primary">
-                  <%= link_to "Create Project", new_project_path %>
-                </button>
-              </div>   
+            <p class="card-text">Recommended Timeframe: <%= @product_2.duration %></p>  
         </div>    
     </div>
     <div class="col">
@@ -35,15 +25,17 @@
           <img class="card-img-top" src="https://s3-ap-southeast-2.amazonaws.com/dev-market-auz/product_2_blog" alt="Card image cap">
             <p class="card-text">Product Description: <%= @product_3.description %></p> 
             <p class="card-text">Product Price: <%= @product_3.price %></p>
-            <p class="card-text">Recommended Timeframe: <%= @product_3.duration %></p>
-              <div>
-                <button type="button" class="btn btn-primary">
-                  <%= link_to "Create Project", new_project_path %>
-                </button>
-              </div>    
+            <p class="card-text">Recommended Timeframe: <%= @product_3.duration %></p>    
         </div>  
     </div>
   </div>
+</div>
+<div class ="row justify-content-center">
+<div>
+  <button type="button" class="btn btn-outline-primary btn-lg">
+    <%= link_to "Create Project", new_project_path %>
+  </button>
+</div>
 </div>
 
 
