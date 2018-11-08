@@ -1,6 +1,6 @@
 # RAILS PROJECT APP - DevMarket
 
-1. Link to [published app on Heroku](add link)
+1. Link to [published app on Heroku](http://dev-market-aus.herokuapp.com/)
 2. Link to [Github Repo](https://github.com/jessicaribeiroalves/devmarket). The 2 remaining team members forked this repo and merged code into.
    
 ##1. What is the need (i.e. challenge) that you will be addressing in your project?
@@ -81,15 +81,27 @@ These competitors are similar in some ways to our marketplace but none of they h
 8. Ability for developers to bid on open projects and for clients to accept/decline these bids. Developers also have the ability to cancel a placed bid as long as it hasn't been accepted by a client.
 9. We have provided placeholders for 'About us' and 'Terms of Service'
 
+
+*Instructions on how to setup, configure and use our App*
+
+1. Git clone to local machine from jessicaribeiroalves/devmarket repo on Github
+2. CD into devmarket (folder)
+3. Do a bundle install on Terminal
+4. Run rails db:create on Terminal (ensure Postgres is running)
+5. Run rails db:migrate on Terminal
+6. Run rails db:seed on Terninal 
+7. Run server (rails s) 
+8. Localhost:3000 should bring up the application
+
+
 *APP SCREENSHOTS*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_homepage.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_homepage_2.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_project_index.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devdashboard.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_devprofiles.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_project_1.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/untitled%20folder/website_edit_profile.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/jes/docs/devmarketimages/app_images/website_homepage.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/jes/docs/devmarketimages/app_images/website_project_index.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_devdashboard.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_devprofiles.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_project_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_edit_profile.png)
 
 
 **Describe the network infrastructure the App may be based on.**
@@ -211,9 +223,7 @@ Between the six tables our models utilises several types of relationships: one t
 
 **Provide your database schema design.**
 
-![alt text](http://url/to/img.png)
-
-
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ERD.png)
 
 **Provide User stories for your App.**
 We got our user story framework from atlassian (See https://www.atlassian.com/agile/project-management/user-stories)
@@ -234,19 +244,19 @@ User story: Self-Employed Professional
 
 *USER STORIES*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/user_stories.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/user_stories.png)
 
 **Provide Wireframes for your App.**
 
 *MOBILE MOCKUP*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/mobile_mockup_3.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/mobile_mockup_1.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/mobile_mockup_2.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_3.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_2.png)
 
 *DESKTOP MOCKUP*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/desktop_mockup.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/desktop_mockup.png)
 
 **Describe the way tasks are allocated and tracked in your project.**
 For project management and for task allocation, we used;
@@ -271,13 +281,15 @@ Brainstorming Process;
 
 *INITIAL PLANNING & BRAINSTORMING*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/brainstorming.jpg)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_1.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_2.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_3.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_4.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_5.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/ideation_6.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/brainstorming.jpg)
+
+*INITIAL PLANNING*
+
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_3.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_4.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_5.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_6.png)
 
 After brainstorming, also on Day 1, we did create a Trello board to add in all relevant tasks associated with the project including the following Trello boards;
 1. User stories
@@ -291,10 +303,10 @@ After brainstorming, also on Day 1, we did create a Trello board to add in all r
 
 *TRELLO BOARD PLANNING*
 
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/trello_1.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/trello_2.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/trello_colourpalette.png)
-![alt text](file:///Users/natashamunasinghe/Desktop/CAcode/Rails/Rails_project_term_2/images/colourpalette.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_2.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_colourpalette.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/colourpalette.png)
 
 *STEP 2: Wireframing and ERDs*
 On Day 2 (Monday), after we had added the initial tasks onto Trello, we created the ERDs and discussed the key database relations. We drew the ERDs out.
@@ -339,10 +351,6 @@ The source control platform we used was Git and Github.
 ***Provide an overview and description of your Testing process.***
 We went through the site 1-by-1 to find bugs in our code and then we went through the site together as a team from beginning to end to identify errors.
 
-**Provide checklist or link to test
-Clicking inputs
-Form inputs**
-
 Here is a  checklist of manual integrations tests we have identified.
 ***Users from the public***
 1. Can see Home page, Product offerings, Project Index, Developer Profiles
@@ -356,6 +364,7 @@ Here is a  checklist of manual integrations tests we have identified.
 3. Can view their developer dashboard
 4. Can cancelled a pending bid
 5. Can edit their profile
+    1. Check invalid data is not being saved and user redirected (model validations)
 6. Can upload an avatar to their profile
 7. Can upload and remove images to their profile
 
@@ -363,12 +372,15 @@ Here is a  checklist of manual integrations tests we have identified.
 ***Clients logged in***
 1. Can see Project Show page
 2. Can post a project
+   1. Check invalid data is not being saved and user redirected (model validations)
 3. Can view their client dashboard
 4. Can cancel an open project
 5. Can accept ONE bid on THEIR 'open' projects
 6. Can complete THEIR 'ongoing' projects
 7. Can rate the project/dev only once the project is complete
+    1. Check invalid data is not being saved and user redirected (model validations)
 8. Can not add incomplete information to create project (and ensure Stripe doesn’t charge for this)
+    1. Check invalid data is not being saved and user redirected (model validations)
 
 **Discuss and analyse requirements related to information system security.**
 *Common threats to web applications*
@@ -397,8 +409,3 @@ The Privacy Act 1988 defines what *personal information* is e.g. individual’s 
 Were this app to grow (over $3million in revenue), in the event  of a privacy breach of personal information, we also are subject to the Notifiable Data Breaches Scheme
 
 Stripe our third party payment processing system also has it owns Privacy Policy and all complaints in Australia for Stripe users have to be heard by Office of the Australian Information Commissioner
-
-
-
-
-
