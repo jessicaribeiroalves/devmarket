@@ -36,7 +36,7 @@ $secondary-bg-color:#A6ABB3;
      background-color: $secondary-bg-color !important;
  }
  .background {
-    background-color: grey;
+    background-color: #E4E4E4;
   }
 
 button a, button a:hover {
@@ -145,7 +145,10 @@ body {
 
 }
 
-// Developer Dashboard
+.prodheading {
+    font-family: 'Raleway', sans-serif;
+}
+
 .header_btn {
  float: left;
 }

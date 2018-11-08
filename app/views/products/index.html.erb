@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-center mb-4">Choose Your Project</h3>
+  <h3 class="text-center mb-4 prodheading">Choose Project</h3>
   <div class="row">
     <% @products.each_with_index do |product, index| %>
       <div class="col">
@@ -20,6 +20,13 @@
       </button>
     </div>
   </div>
+</div>
+<div class ="row justify-content-center">
+<div>
+  <button type="button" class="btn btn-outline-primary btn-lg">
+    <%= link_to "Create Project", new_project_path %>
+  </button>
+</div>
 </div>
 
 

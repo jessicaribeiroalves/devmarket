@@ -24,8 +24,8 @@
             <% if bid.status == "accepted" && bid.project.status == "ongoing" %>
               <tr>
                 <td><%= bid.project_id %></td>
-                <td><%= bid.project.title %></td>
-                <td><%= bid.project.deadline%></td>
+                <td><%= link_to bid.project.title, project_path(bid.project.id) %></td>
+                <td><%= bid.project.deadline.strftime("%d %B %Y") %></td>
                 <td><%= bid.status %></td>
               </tr>
             <% end %>
@@ -52,7 +52,7 @@
             <% if bid.status == "pending" && bid.project.status == "open" %>
               <tr>
                 <td><%= bid.project_id %></td>
-                <td><%= bid.project.title %></td>
+                <td><%= link_to bid.project.title, project_path(bid.project.id) %></td>
                 <td><%= bid.status %></td>
                 <td><%= link_to "Cancel bid?", cancel_bid_project_path(bid), method: :post, data: { confirm: 'Are you sure you want to cancel this bid?' }, class:"btn btn-outline-danger" %></td>
               </tr>  
@@ -80,7 +80,7 @@
             <% if bid.status == "accepted" && bid.project.status == "completed" %>
               <tr>
                 <td><%= bid.project_id %></td>
-                <td><%= bid.project.title %></td>
+                <td><%= link_to bid.project.title, project_path(bid.project.id) %></td>
                 <td><%= bid.project.overview %></td>
                 <td><% if bid.project.rating != nil %>
                   <%= button_to bid.project.rating.rate, project_path(bid.project_id), :class => "btn btn-secondary btn-lg", :method => :get %>

@@ -1,23 +1,9 @@
 <div class="container">
-  <div class="row justify-content-center">
+   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-6 p-4 bg-white">
       <h1 class="text-center p-2" id="dashtitle">Create a new project:</h1>
       <div class="container text-center">
         <%= form_with model: @project, local: true do |f| %>
-        
-          <% if @project.errors.any? %>
-            <div id="error_explanation">
-              <h2>
-                <%= pluralize(@project.errors.count, "error") %>
-                prohibited this project from being saved:
-              </h2>
-              <ul>
-                <% @project.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
 
           <div class="form-group p-1">
             <%= f.label :product_id %> 
