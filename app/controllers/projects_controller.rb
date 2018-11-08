@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
       @project = Project.new
       @products = Product.all
     else
-      redirect_to root_path
+      redirect_to root_path, notice: "You are not allowed to create a project."
     end
   end
 
