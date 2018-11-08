@@ -8,7 +8,6 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <%# <th scope="col">Project ID</th> %>
             <th scope="col">Title</th>
             <th scope="col">Bids</th>
           </tr>
@@ -16,7 +15,6 @@
         <tbody>
           <% @open.each_with_index do |project, index| %>
             <tr>
-              <%# <th scope="row"><%= project.id %>
               <td><%= link_to project.title, project_path(project.id) %></td>
               <td>
                 <div id="accordion">
@@ -81,7 +79,6 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <%# <th scope="col">Project ID</th> %>
             <th scope="col">Title</th>
             <th scope="col">Developer</th>
             <th scope="col">Rating</th>
@@ -91,7 +88,6 @@
         <tbody>
           <% @completed.each do|project| %>
             <tr>
-              <%# <th scope="row"><%= project.id %>
               <td><%= link_to project.title, project_path(project.id) %></td>
               <td><%= link_to project.bids.where(:status => "accepted")[0].user.name, profile_path(project.bids.where(:status => "accepted")[0].user_id), method: :get %></td>
               <td><% if project.rating != nil %>
