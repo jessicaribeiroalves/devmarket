@@ -8,7 +8,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Project ID</th>
+            <%# <th scope="col">Project ID</th> %>
             <th scope="col">Title</th>
             <th scope="col">Bids</th>
           </tr>
@@ -16,14 +16,14 @@
         <tbody>
           <% @open.each_with_index do |project, index| %>
             <tr>
-              <th scope="row"><%= project.id %></th>
+              <%# <th scope="row"><%= project.id %>
               <td><%= link_to project.title, project_path(project.id) %></td>
               <td>
                 <div id="accordion">
                   <div class="card">
                     <div class="card-header" id="heading<%= index.to_s %>">
                       <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">Check</button>
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">Check the bids for project <%= (index+1).to_s %></button>
                       </h5>
                     </div>
 
@@ -34,8 +34,8 @@
                         <% else %>
                           <% project.bids.each do |bid| %>
                             <ul class="list-group">
-                            <li class="list-group-item list-group-item-success"><%= link_to "Accept", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post, data: {confirm: 'Accept bid?'} %>Bid <%= bid.id %></li>
-                            <li class="list-group-item list-group-item-primary"><%= link_to bid.user.name, profile_path(bid.user_id), method: :get %></li><br>
+                            <li class="list-group-item list-group-item-success"><%= link_to "Accept bid", projects_dashboard_path({project_id: project.id, bid_id: bid.id}), method: :post, data: {confirm: 'Accept bid?'} %></li>
+                            <li class="list-group-item list-group-item-secondary"><%= link_to bid.user.name, profile_path(bid.user_id), method: :get %></li><br>
                           <% end %>
                         <% end %>
                       </div>
@@ -53,7 +53,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Project ID</th>
+            <%# <th scope="col">Project ID</th> %>
             <th scope="col">Title</th>
             <th scope="col">Developer</th>
             <th scope="col">Deadline</th>
@@ -63,9 +63,9 @@
         <tbody>
           <% @ongoing.each do|project| %>
             <tr>
-              <th scope="row"><%= project.id %></th>
+              <%# <th scope="row"><%= project.id %>
               <td><%= link_to project.title, project_path(project.id) %></td>
-              <td>Developer's name</td>
+              <td><%= link_to project.bids.where(:status => "accepted")[0].user.name, profile_path(project.bids.where(:status => "accepted")[0].user_id), method: :get %></td>
               <td><%= project.deadline.strftime("%d %B %Y") %></td>
               <td>
               <% if current_user.id == project.user_id && project.status == "ongoing" %>
@@ -81,23 +81,34 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Project ID</th>
+            <%# <th scope="col">Project ID</th> %>
             <th scope="col">Title</th>
             <th scope="col">Developer</th>
             <th scope="col">Rating</th>
+            <th scope="col">Review</th>
           </tr>
         </thead>
         <tbody>
           <% @completed.each do|project| %>
             <tr>
-              <th scope="row"><%= project.id %></th>
+              <%# <th scope="row"><%= project.id %>
               <td><%= link_to project.title, project_path(project.id) %></td>
-              <td><%= project.bids[0].user.name %></td>
+              <td><%= link_to project.bids.where(:status => "accepted")[0].user.name, profile_path(project.bids.where(:status => "accepted")[0].user_id), method: :get %></td>
               <td><% if project.rating != nil %>
-                      <%= button_to project.rating.rate, project_path(project, anchor: 'rating'), :class => "btn btn-secondary btn-lg", :method => :get %>
-                    <% else %>
-                      <%= link_to "Rate this project", project_path(project, anchor: 'rating'), method: :get %>
-                    <% end %></td>
+                    <% project.rating.rate.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - project.rating.rate).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "Rate this project", project_path(project.id, anchor: "not-rated") %>
+                  <% end %>
+              </td>
+              <td><% if project.rating != nil %>
+                      <%= link_to "Check", project_path(project.id, anchor: "rated") %>
+                    <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
