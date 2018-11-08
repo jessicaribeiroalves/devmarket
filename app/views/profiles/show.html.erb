@@ -1,99 +1,98 @@
 <%# Dev User info and Stats (overall rating) %>
 <div class="container bg-white">
-    <div class="row justify-content-center p-3">
-        <div class="col-sm-12">
-            <h2 class="text-center"><%= @dev.name %> Profile</h2>
-        </div>
+  <div class="row justify-content-center p-3 py-3">
+    <div class="col-sm-12">
+      <h2 class="text-center"><%= @dev.name %>'s Profile</h2>
     </div>
+  </div>
 
-    <div class="row justify-content-center p-3">
-        <div class="col-sm-12 col-md-3">
-            <div class="p-2 text-center">
-                <%= image_tag @dev.avatar_url, alt: "User Avatar Picture" unless @dev.avatar_url.nil? %>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-9 align-self-center">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <% if @overall_rating %>
-                        <span class="card-title">Average Rating</span>
-                        <% @overall_rating.to_i.times do %>
-                            <i class="fas fa-star"></i>
-                        <% end %>
-                        <% (5 - @overall_rating.to_i).times do %>
-                            <i class="far fa-star"></i>
-                        <% end %>
-                        <%= @overall_rating.round(2) %>
-                    <% else %>
-                        No reviews yet
-                    <% end %>
-                </li>
-                <li class="list-group-item"><%= @dev.name %></li>
-                <li class="list-group-item"><%= @dev.company_name %></li>
-                <li class="list-group-item"><%= @dev.city %></li>
-                <li class="list-group-item"><%= @dev.bio %></li>
-            </ul>
-        </div>
+  <div class="row justify-content-center p-3">
+    <div class="col-sm-12 col-md-3">
+      <div class="p-2 text-center">
+        <%= image_tag @dev.avatar_url, alt: "User Avatar Picture", class:"card-img img-responsive" unless @dev.avatar_url.nil? %>
+      </div>
     </div>
+    <div class="col-sm-12 col-md-9 align-self-center">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <% if @dev.overall_rating %>
+            <span class="card-title">Average Rating</span>
+            <% @dev.overall_rating.to_i.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - @dev.overall_rating.to_i).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <%= @dev.overall_rating.round(2) %>
+          <% else %>
+            No reviews yet
+          <% end %>
+        </li>
+        <li class="list-group-item"><%= @dev.name %></li>
+        <li class="list-group-item"><%= @dev.company_name %></li>
+        <li class="list-group-item"><%= @dev.city %></li>
+        <li class="list-group-item"><%= @dev.bio %></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <% if @dev.user_type == "dev" %>
-    <%# Dev can upload images of their works (thumbnails => full; max 6) %>
-    <div class="container my-3 bg-white">
-        <div class="row justify-content-center p-3">
-            <div class="col-sm-12">
-                <h2 class="text-center">Portfolio</h2>
-            </div>
+  <%# Dev can upload images of their works (thumbnails => full; max 6) %>
+  <div class="container my-3 py-3 bg-white">
+    <div class="row justify-content-center p-3">
+      <div class="col-sm-12">
+        <h2 class="text-center">Portfolio</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center p-3">
+      <% if @dev.images.empty? %>
+        <div class="card">
+          <h5 class="card-body text-center">Nothing to see yet</h5>
         </div>
-        <div class="row justify-content-center p-3">
-            <% if @images.empty? %>
-                <div class="card">
-                    <h5 class="card-body text-center">Nothing to see yet</h5>
-                </div>
-            <% else %>
-                <% @images.each do |image| %>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                    <%# <%= image_tag image.name_url , alt: "Screenshot of Devs work" unless image.name_url.nil? %>
-                    <%= link_to(image_tag(image.name.thumb.url, alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
-                    </div>
+      <% else %>
+        <% @dev.images.each do |image| %>
+          <div class="col-sm-12 col-md-6 col-lg-4 my-1">
+          <%= link_to(image_tag(image.name.thumb.url, class:"card-img img-responsive", alt: "Screenshot of Devs work"), image.name_url, target: '_blank') if image.name? %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# List of Dev’s reviews %>
+  <div class="container my-3 py-3 bg-white">
+    <div class="row justify-content-center p-3">
+      <div class="col-sm-12">
+        <h2 class="text-center">Reviews</h2>
+      </div>
+    </div>
+    <%# <div class="row justify-content-center p-3"> %>
+    <div class="card-deck">
+      <% if @ratings.empty? %>
+        <div class="card">
+          <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
+        </div>
+      <% else %>
+        <% @ratings.each do |rating| %>
+          <div class="card">
+            <div class="card-body">
+              <span class="card-title">Rated</span>
+                <% rating.rate.to_i.times do %>
+                  <i class="fas fa-star"></i>
                 <% end %>
-            <% end %>
-        </div>
+                <% (5 - rating.rate.to_i).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              <p class="card-text"><%= rating.testimony %></p>
+              <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
-    <%# List of Dev’s reviews %>
-    <div class="container my-3 bg-white">
-        <div class="row justify-content-center p-3">
-            <div class="col-sm-12">
-                <h2 class="text-center">Reviews</h2>
-            </div>
-        </div>
-        <%# <div class="row justify-content-center p-3"> %>
-        <div class="card-deck">
-            <% if @ratings.empty? %>
-                <div class="card">
-                    <h5 class="card-body text-center">Be the first one to work with <%= @dev.name %></h5>
-                </div>
-            <% else %>
-                <% @ratings.each do |rating| %>
-                    <div class="card">
-                        <div class="card-body">
-                            <span class="card-title">Rated</span>
-                                <% rating.rate.to_i.times do %>
-                                    <i class="fas fa-star"></i>
-                                <% end %>
-                                <% (5 - rating.rate.to_i).times do %>
-                                    <i class="far fa-star"></i>
-                                <% end %>
-                            <p class="card-text"><%= rating.testimony %></p>
-                            <p class="card-text"><small class="text-muted"><%= rating.created_at.strftime("%Y-%B") %></small></p>
-                        </div>
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
-
-        <%# </div> %>
-        <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
-    </div>
+    <%# </div> %>
+    <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
+  </div>
 <% end %>

@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  # enum option: {landing_page: 0, blog: 1, ecommerce: 2}  # need to discuss ERD and schema
   has_many :projects
 
   # Validation
@@ -12,7 +11,7 @@ class Product < ApplicationRecord
   validates :price,
             presence: true,
             numericality: true,
-            length: {maximum: 4},
+            length: {maximum: 10},
             on: :create,
             allow_nil: false
 
