@@ -73,6 +73,7 @@
             <th scope="col">Project Title</th>
             <th scope="col">Project Overview</th>
             <th scope="col">Rating</th>
+            <th scope="col">Review</th>
           </tr>
         </thead>
         <tbody>
@@ -83,10 +84,20 @@
                 <td><%= link_to bid.project.title, project_path(bid.project.id) %></td>
                 <td><%= bid.project.overview %></td>
                 <td><% if bid.project.rating != nil %>
-                  <%= button_to bid.project.rating.rate, project_path(bid.project_id), :class => "btn btn-secondary btn-lg", :method => :get %>
-                  <% else %>
-                  No rating yet
-                <% end %></td>
+                      <% bid.project.rating.rate.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+                      <% (5 - bid.project.rating.rate).times do %>
+                        <i class="far fa-star"></i>
+                      <% end %>
+                    <% else %>
+                      No rating yet
+                    <% end %>
+                </td>
+                <td><% if bid.project.rating != nil %>
+                      <%= link_to "Check", project_path(bid.project_id, anchor: "rated") %>
+                    <% end %>
+                </td>
               </tr>
             <% end %>  
           <% end %>      
