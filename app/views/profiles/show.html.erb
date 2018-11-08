@@ -67,7 +67,6 @@
         <h2 class="text-center">Reviews</h2>
       </div>
     </div>
-    <%# <div class="row justify-content-center p-3"> %>
     <div class="card-deck">
       <% if @ratings.empty? %>
         <div class="card">
@@ -92,7 +91,8 @@
       <% end %>
     </div>
 
-    <%# </div> %>
-    <div><%= link_to "Back", :back, class:"my-3 btn btn-outline-secondary btn-sm" %></div>
+    <button type="button" class="mt-2 btn btn-secondary btn-sm">
+      <%= link_to "Back", :back %>
+    </button>
   </div>
 <% end %>

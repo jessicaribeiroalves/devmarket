@@ -50,7 +50,9 @@
             <p class="card-text">
               <%= @rated.testimony %>
             </p>
-            <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev), class:"btn btn-outline-secondary" %>
+              <button type="button" class="mt-2 btn btn-secondary btn-sm">
+                <%= link_to "Check out #{ @accepted_dev.name }'s profile page", profile_path(@accepted_dev) %>
+              </button>
           </div>
       <% end  %>
       <%# --- Completed Project-Not Yet Rated--- %>
@@ -93,8 +95,10 @@
           <% @bids.each do |bid| %>
             <div class="card mx-auto my-1">
               <div class="card-body">
-                <%= link_to "Check out #{bid.user.name}'s profile page", profile_path(bid.user_id), class:"btn btn-outline-secondary" %>
-                <div><small class="text-muted"><%= bid.created_at.strftime("%Y-%B-%d") %></small></div>
+                <button type="button" class="mt-2 btn btn-secondary">
+                  <%= link_to "Check out #{bid.user.name}'s profile page", profile_path(bid.user_id) %>
+                </button>
+                <div><small class="text-muted ml-1"><%= bid.created_at.strftime("%Y-%B-%d") %></small></div>
               </div>
             </div>
           <% end %>

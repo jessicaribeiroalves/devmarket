@@ -35,19 +35,65 @@ $secondary-bg-color:#A6ABB3;
  .bg-secondary {
      background-color: $secondary-bg-color !important;
  }
+ .background {
+    background-color: grey;
+  }
 
+button a, button a:hover {
+    color: $primary-bg-color;
+}
 
 ///// FONTS /////
 $header-font: 'Roboto', sans-serif;
 $body-font: 'Open Sans', sans-serif;
+
+#hero_text {
+    font-size: 3rem;
+    color: #F6F7F7;
+  }
+  
+  @include media-breakpoint-up(sm) {
+    #hero_text {
+      font-size: 4rem;
+    }
+  }
+  
+  @include media-breakpoint-up(md) {
+    #hero_text {
+      font-size: 6rem;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    #hero_text {
+      font-size: 7rem;
+    }
+  }
+
+.headertext {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+}
+
+.caption {
+    font-family: 'Arial';
+    font-size: 20px;
+}
 
 
  //// Links /////
  a, a:visited {
     padding: 0 10px;
     text-decoration: none !important;
-    color: $primary-color;
+    // color: $primary-color;
 }
+a:hover {
+    padding: 0 10px;
+    text-decoration: none !important;
+    // color: $secondary-color !important;
+}
+
+
 
 .hero_text {
     font-size: 100px;
@@ -99,23 +145,7 @@ body {
 
 }
 
-.headertext {
-    font-family: 'Raleway', sans-serif;
-    font-size: large;
-}
-
-.caption {
-    font-family: 'Arial';
-    font-size: 20px;
-
-}
-
-.background {
-  background-color: grey;
-}
-
+// Developer Dashboard
 .header_btn {
  float: left;
-
-
 }

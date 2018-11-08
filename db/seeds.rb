@@ -25,9 +25,9 @@ Product.create(
 10.times do |i|
   User.create(
     user_type: "client",
-    email: "clientfull#{i}@mail.com",
+    email: "client#{i}@mail.com",
     password: "password",
-    name: "Client Joe",
+    name: Faker::Name.name,
     company_name: "Need Help Inc.",
     phone_number: 212345678,
     bio: "need lots of help, find me a dev",
@@ -37,9 +37,9 @@ end
 10.times do |i|
   User.create(
     user_type: "dev",
-    email: "devfull#{i}@mail.com",
+    email: "dev#{i}@mail.com",
     password: "password",
-    name: "Dev Jane",
+    name: Faker::Name.name,
     company_name: "Dev for You Inc.",
     phone_number: 287654321,
     bio: "I am ninja developer. Highly skilled in all areas of web development, you can count on me to get your projects done. I have over 3 years. I work along side my clients to understand exactly what they are looking for and deliver the right solution.
@@ -53,7 +53,7 @@ end
 
 10.times do
   Project.create(
-    price: rand(300..1000),
+    price: rand(30000..100000),
     title: Faker::Appliance.brand,
     overview: Faker::Lorem.sentence(3),
     description: Faker::Lorem.paragraph(2),
@@ -78,9 +78,9 @@ clients = []
 10.times do |i|
   client = User.create(
     user_type: "client",
-    email: "clientfull#{i + 10}@mail.com",
+    email: "client#{i + 10}@mail.com",
     password: "password",
-    name: "Client Joe",
+    name: Faker::Name.name,
     company_name: "Need Help Inc.",
     phone_number: 212345678,
     bio: "need lots of help, find me a dev",
@@ -92,9 +92,9 @@ end
 10.times do |i|
   dev = User.create(
     user_type: "dev",
-    email: "devfull#{i + 10}@mail.com",
+    email: "dev#{i + 10}@mail.com",
     password: "password",
-    name: "Dev Jane",
+    name: Faker::Name.name,
     company_name: "Dev for You Inc.",
     phone_number: 287654321,
     bio: "I am ninja developer. Highly skilled in all areas of web development, you can count on me to get your projects done. I have over 3 years. I work along side my clients to understand exactly what they are looking for and deliver the right solution.
@@ -109,7 +109,7 @@ end
 
 clients.each do |client_id|
   Project.create(
-    price: rand(300..1000),
+    price: rand(30000..100000),
     title: Faker::Appliance.brand,
     overview: Faker::Lorem.sentence(3),
     description: Faker::Lorem.paragraph(2),
@@ -146,9 +146,9 @@ projects2 = []
 10.times do |i|
   client = User.create(
     user_type: "client",
-    email: "clientfull#{i + 20}@mail.com",
+    email: "client#{i + 20}@mail.com",
     password: "password",
-    name: "Client Joe",
+    name: Faker::Name.name,
     company_name: "Need Help Inc.",
     phone_number: 212345678,
     bio: "need lots of help, find me a dev",
@@ -160,9 +160,9 @@ end
 10.times do |i|
   dev = User.create(
     user_type: "dev",
-    email: "devfull#{i + 20}@mail.com",
+    email: "dev#{i + 20}@mail.com",
     password: "password",
-    name: "Dev Jane",
+    name: Faker::Name.name,
     company_name: "Dev for You Inc.",
     phone_number: 287654321,
     bio: "I am ninja developer. Highly skilled in all areas of web development, you can count on me to get your projects done. I have over 3 years. I work along side my clients to understand exactly what they are looking for and deliver the right solution.
@@ -177,7 +177,7 @@ end
 
 clients2.each do |client_id|
   project = Project.create(
-    price: rand(300..1000),
+    price: rand(30000..100000),
     title: Faker::Appliance.brand,
     overview: Faker::Lorem.sentence(3),
     description: Faker::Lorem.paragraph(2),
