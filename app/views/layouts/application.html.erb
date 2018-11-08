@@ -14,8 +14,16 @@
   <body class="bg-primary">
     <%= render 'layouts/header'%>
 
-    <p class="notice pt-3 pl-3"><%= notice %></p>
-    <p class="alert pt-3 pl-3"><%= alert %></p>
+    <% unless flash.blank? %>
+      <% flash.each do |key, value| %>
+        <div class='alert alert-dismissible mb-0 alert-<%= key == 'notice' ? 'primary' : 'danger' %>'>
+          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          <%= value %>
+        </div>
+      <% end %>
+    <% end %>
 
     <%= yield %>
 
