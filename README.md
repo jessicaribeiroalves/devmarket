@@ -83,12 +83,12 @@ These competitors are similar in some ways to our marketplace but none of they h
 
 *APP SCREENSHOTS*
 
-![alt text](/docs/devmarketimages/app_images/website_homepage.png)
-![alt text](/docs/devmarketimages/app_images/website_project_index.png)
-![alt text](/docs/devmarketimages/app_images/website_devdashboard.png)
-![alt text](/docs/devmarketimages/app_images/website_devprofiles.png)
-![alt text](/docs/devmarketimages/app_images//website_project_1.png)
-![alt text](/docs/devmarketimages/app_images/website_edit_profile.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/jes/docs/devmarketimages/app_images/website_homepage.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/jes/docs/devmarketimages/app_images/website_project_index.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_devdashboard.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_devprofiles.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_project_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/app_images/website_edit_profile.png)
 
 
 **Describe the network infrastructure the App may be based on.**
@@ -210,7 +210,7 @@ Between the six tables our models utilises several types of relationships: one t
 
 **Provide your database schema design.**
 
-![alt text](/docs/devmarketimages/ERD.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ERD.png)
 
 **Provide User stories for your App.**
 We got our user story framework from atlassian (See https://www.atlassian.com/agile/project-management/user-stories)
@@ -231,19 +231,19 @@ User story: Self-Employed Professional
 
 *USER STORIES*
 
-![alt text](/docs/devmarketimages/user_stories.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/user_stories.png)
 
 **Provide Wireframes for your App.**
 
 *MOBILE MOCKUP*
 
-![alt text](/docs/devmarketimages/mobile_mockup_3.png)
-![alt text](/docs/devmarketimages/mobile_mockup_1.png)
-![alt text](/docs/devmarketimages/mobile_mockup_2.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_3.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/mobile_mockup_2.png)
 
 *DESKTOP MOCKUP*
 
-![alt text](/docs/devmarketimages/desktop_mockup.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/desktop_mockup.png)
 
 **Describe the way tasks are allocated and tracked in your project.**
 For project management and for task allocation, we used;
@@ -268,13 +268,15 @@ Brainstorming Process;
 
 *INITIAL PLANNING & BRAINSTORMING*
 
-![alt text](/docs/devmarketimages/brainstorming.jpg)
-![alt text](/docs/devmarketimages/ideation_1.png)
-![alt text](/docs/devmarketimages/ideation_2.png)
-![alt text](/docs/devmarketimages/ideation_3.png)
-![alt text](/docs/devmarketimages/ideation_4.png)
-![alt text](/docs/devmarketimages/ideation_5.png)
-![alt text](/docs/devmarketimages/ideation_6.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/brainstorming.jpg)
+
+*INITIAL PLANNING*
+
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_3.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_4.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_5.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/ideation_6.png)
 
 After brainstorming, also on Day 1, we did create a Trello board to add in all relevant tasks associated with the project including the following Trello boards;
 1. User stories
@@ -288,10 +290,10 @@ After brainstorming, also on Day 1, we did create a Trello board to add in all r
 
 *TRELLO BOARD PLANNING*
 
-![alt text](/docs/devmarketimages/trello_1.png)
-![alt text](/docs/devmarketimages/trello_2.png)
-![alt text](/docs/devmarketimages/trello_colourpalette.png)
-![alt text](/docs/devmarketimages/colourpalette.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_1.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_2.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/trello_colourpalette.png)
+![alt text](https://raw.githubusercontent.com/natashamunasinghe/devmarket/master/docs/devmarketimages/colourpalette.png)
 
 *STEP 2: Wireframing and ERDs*
 On Day 2 (Monday), after we had added the initial tasks onto Trello, we created the ERDs and discussed the key database relations. We drew the ERDs out.
