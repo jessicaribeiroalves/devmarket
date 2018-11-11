@@ -50,13 +50,30 @@ $body-font: 'Open Sans', sans-serif;
 }
 
 .hero_text {
-    font-size: 100px;
     font-family: 'Arial Bold';
     float: right;
     color: white;
     bottom: 10px;
-
 }
+  
+  @include media-breakpoint-up(sm) {
+    .hero_text {
+      font-size: 4rem;
+    }
+  }
+  
+  @include media-breakpoint-up(md) {
+    .hero_text {
+      font-size: 6rem;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) {
+    .hero_text {
+      font-size: 7rem;
+    }
+  }
+
 
  //// Universal Styling /////
 body {
@@ -110,18 +127,12 @@ body {
 .caption {
     font-family: 'Arial';
     font-size: 20px;
-
 }
 
 .background {
   background-color: #E4E4E4;
 }
 
-.header_btn {
- float: left;
-
-
-}
 
 //// Dashboards ///// 
 
