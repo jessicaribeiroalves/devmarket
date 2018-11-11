@@ -54,9 +54,6 @@ $body-font: 'Open Sans', sans-serif;
     float: right;
     color: white;
     bottom: 10px;
-    font-size: 3rem;
-    color: #F6F7F7;
-
 }
   
   @include media-breakpoint-up(sm) {
@@ -76,6 +73,7 @@ $body-font: 'Open Sans', sans-serif;
       font-size: 7rem;
     }
   }
+
 
  //// Universal Styling /////
 body {
@@ -129,18 +127,12 @@ body {
 .caption {
     font-family: 'Arial';
     font-size: 20px;
-
 }
 
 .background {
   background-color: #E4E4E4;
 }
 
-.header_btn {
- float: left;
-
-
-}
 
 //// Dashboards ///// 
 
